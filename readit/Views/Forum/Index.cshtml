@@ -1,3 +1,23 @@
-﻿<div class="text-center">
-    <h1 class="display-4">Forums</h1>
-</div>
+﻿@model IEnumerable<readit.Models.ForumModel>
+
+<br />
+
+<table class="table text-light">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+            </tr>
+        }
+    </tbody>
+</table>
