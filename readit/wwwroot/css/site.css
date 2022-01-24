@@ -16,7 +16,8 @@ html {
 body {
     color: wheat;
     margin-bottom: 60px;
-    background-color: #1A1A1B;
+    background-color: #0d1117;
+/*#1A1A1B*/
 }
 
 a {
@@ -30,4 +31,3 @@ nav, footer {
 label{
     color: deeppink;
 }
-
