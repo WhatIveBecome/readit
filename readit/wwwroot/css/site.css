@@ -1,23 +1,23 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
     color: wheat;
     margin-bottom: 60px;
     background-color: #0d1117;
-/*#1A1A1B*/
+    /*#1A1A1B*/
 }
 
 a {
@@ -28,6 +28,19 @@ nav, footer {
     background-color: #2b2b2c;
 }
 
-label{
+label {
     color: deeppink;
+}
+
+a {
+    text-decoration: none;
+}
+
+#underline:hover {
+    text-decoration: underline;
+}
+
+a:hover, #underline:hover {
+    color: inherit;
+    opacity: 85%;
 }
