@@ -33,8 +33,7 @@ namespace readit.Controllers
                 return NotFound();
             }
 
-            var topicModel = await _context.TopicModel
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var topicModel = await _context.TopicModel.FirstOrDefaultAsync(m => m.Id == id);
             if (topicModel == null)
             {
                 return NotFound();
