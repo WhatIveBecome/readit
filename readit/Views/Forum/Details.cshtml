@@ -1,1 +1,48 @@
-﻿<h1>Details View</h1>
+﻿@model IEnumerable<readit.Models.TopicModel>
+
+@{
+    ViewData["Title"] = "Topics";
+}
+
+@*TODO: ADD AUTHORS*@
+
+<h1>Topics</h1>
+
+<br />
+<div>   
+    <a asp-controller="Topic" asp-action="Create" class="btn btn-primary">New Topic</a>
+</div>
+<br />
+
+<table class="table text-light">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                Author
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a id="underline" asp-controller="Topic" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a>
+
+                </td>
+                <td>
+                </td>
+                <td>
+                    <a asp-controller="Topic" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">Edit</a>
+                    <a asp-controller="Topic" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
