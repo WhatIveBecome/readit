@@ -30,27 +30,56 @@ namespace readit.Controllers
             return RedirectToAction("Index");
         }
 
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Details(int? id)
         {
-            //ForumModel forumModel = new ForumModel();
-           
-            var forumModel = await _appDbContext.Forums.FirstOrDefaultAsync(m => m.Id == id);
-            await _appDbContext.Forums.FindAsync(id);
+            var forumModel = await _appDbContext.Forums.FindAsync(id);
 
-            //if (id == null || forumModel == null)
-            //{
-            //    return NotFound();
-            //}
+            if (id == null || forumModel == null)
+            {
+                return NotFound();
+            }
 
             return View(forumModel);
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> Edit(ForumModel forumModel)
-        //{
-        //    _appDbContext.Forums.Update(forumModel);
-        //    await _appDbContext.SaveChangesAsync();
-        //    return RedirectToAction("Index");
-        //}
+        public async Task<IActionResult> Edit(int? id)
+        {        
+            var forumModel = await _appDbContext.Forums.FindAsync(id);
+
+            if (id == null || forumModel == null)
+            {
+                return NotFound();
+            }
+
+            return View(forumModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(ForumModel forumModel)
+        {
+            _appDbContext.Forums.Update(forumModel);
+            await _appDbContext.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> Delete(int? id)
+        {
+            var forumModel = await _appDbContext.Forums.FindAsync(id);
+
+            if (id == null || forumModel == null)
+            {
+                return NotFound();
+            }
+
+            return View(forumModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(ForumModel forumModel)
+        {
+            _appDbContext.Forums.Remove(forumModel);
+            await _appDbContext.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
     }
 }
