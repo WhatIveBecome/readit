@@ -1,16 +1,17 @@
-﻿@model readit.Models.TopicModel
+﻿@model readit.Models.ForumModel
 
 @{
-    ViewData["Title"] = "New Topic";
+    ViewData["Title"] = "Edit";
 }
 
-<h1>Create New Topic</h1>
+<h1>Edit</h1>
 
 <hr />
 <div class="row">
-    <div class="col-6">
-        <form asp-action="Create">
+    <div class="col-md-4">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
@@ -22,21 +23,9 @@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <br />
-
-            @*// TODO ADD VALIDATION*@
-
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox">
-                <label class="form-check-label">
-                    I accept <a>rules</a>
-                </label>
-            </div>
-
-            <br />
-
             <div class="form-group">
                 <a asp-action="Index" class="btn btn-dark">Back</a>
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
