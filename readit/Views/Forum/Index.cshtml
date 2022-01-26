@@ -17,7 +17,7 @@
         @foreach (var item in Model)
         {
             <tr>
-               <td><a id="underline" asp-route-id="@item.Id" asp-controller="Topic" asp-action="Index">@Html.DisplayFor(modelItem => item.Name)</a></td>
+               <td><a id="underline" asp-route-id="@item.Id" asp-controller="@item.Name" asp-action="Index">@Html.DisplayFor(modelItem => item.Name)</a></td>
                 @*<td><a id="underline" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a></td>*@
                 <td>@item.Description</td>
                 <td><a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">Edit</a>

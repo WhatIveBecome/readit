@@ -8,6 +8,7 @@ namespace readit.Database
     {       
         public DbSet<ForumModel> Forums { get; set; }
         public DbSet<TopicModel> TopicModel { get; set; }
+        public DbSet<PythonTopicModel> Python { get; set; }
         public AppDbContext(DbContextOptions options) :base(options){}
     }
 }
