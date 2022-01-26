@@ -1,6 +1,6 @@
 ﻿namespace readit.Models
 {
-    public class PythonTopicModel
+    public class GeneralModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

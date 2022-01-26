@@ -4,7 +4,7 @@ using readit.Database;
 
 namespace readit.Controllers
 {
-    public class PythonController : Controller
+    public class GeneralController : Controller
     {
         private readonly AppDbContext _appDbContext;
         public IActionResult Index()
