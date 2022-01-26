@@ -17,5 +17,10 @@ namespace readit.Controllers
         {
             return View(await _appDbContext.General.ToListAsync());
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }
