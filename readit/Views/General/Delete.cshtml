@@ -1,9 +1,22 @@
 ﻿@model readit.Models.GeneralModel
 
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
 <h3>Are you sure you want to delete following topic?</h3>
 <br />
 <h4>Title: @Html.DisplayFor(model => model.Name)</h4>
 <br />
 
-<partial name="_DeletePartialView" />
+<div> 
+    <form asp-action="Delete">
+        <a asp-action="Index" class="btn btn-dark">Back</a>
+        @*<input type="hidden" asp-for="Id" />*@
+        <input type="submit" value="Delete" class="btn btn-danger" /> 
+    </form>
+</div>
+
+@*<partial name="_DeletePartialView" />*@
 
