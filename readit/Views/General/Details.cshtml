@@ -11,11 +11,18 @@
     <div class="border border-primary p-4 mb-4">
         @Html.DisplayFor(model => model.Description)
     </div>
-
-<textarea class="form-control mb-2" rows="2"></textarea> @*// new controller answer*@
-    <div>
-        <a asp-action="Index" class="btn btn-dark">Back</a>
-        <a asp-action="Details" class="btn btn-primary">Reply</a>
-    </div>
 </div>
+@*    @foreach (var item in Model.Replies)
+    {
+        <div class="border border-primary p-4 mb-4">
+            @item.Description
+        </div>
+    }*@
 
+<form asp-controller="Reply" asp-action="Reply">
+<textarea class="form-control mb-2" rows="2"></textarea>
+<div>
+    <a asp-action="Index" class="btn btn-dark">Back</a>
+    <input type="submit" value="Reply" class="btn btn-primary" />
+</div>
+</form>

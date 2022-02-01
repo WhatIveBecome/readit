@@ -9,6 +9,7 @@ namespace readit.Database
         public DbSet<ForumModel> Forums { get; set; }
         public DbSet<TopicModel> TopicModel { get; set; }
         public DbSet<GeneralModel> General { get; set; }
+        public DbSet<ReplyModel> Replies { get; set; }
         public AppDbContext(DbContextOptions options) :base(options){}
     }
 }
