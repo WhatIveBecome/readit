@@ -1,15 +1,18 @@
-﻿@model readit.Models.ReplyModel
+﻿@model IEnumerable<readit.Models.ReplyModel>
 
-@foreach (var item in Model.Replies)
+@foreach (var item in Model)
 {
     <div class="border border-primary p-4 mb-4">
-        @item.Description
+       @item.Description       
     </div>
 }
-<form asp-action="Reply">
-<textarea class="form-control mb-2" rows="2"></textarea>
-    <div>
+
+@*<form asp-action="Reply">
+<textarea asp-for="" class="form-control mb-2" rows="2"></textarea>   
+    <div>       
         <a asp-action="Index" class="btn btn-dark">Back</a>
-        <a asp-action="Index" class="btn btn-primary">Reply</a>
+        <input type="submit" value="Reply" class="btn btn-primary" />
     </div>
-</form>
+</form>*@
+
+<partial name="_PartialReply" model="null" />
