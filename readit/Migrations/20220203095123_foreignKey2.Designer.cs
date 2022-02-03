@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using readit.Database;
 
@@ -11,9 +12,10 @@ using readit.Database;
 namespace readit.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220203095123_foreignKey2")]
+    partial class foreignKey2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -240,7 +242,7 @@ namespace readit.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Forums", (string)null);
+                    b.ToTable("Forums");
                 });
 
             modelBuilder.Entity("readit.Models.GeneralModel", b =>
@@ -264,7 +266,7 @@ namespace readit.Migrations
 
                     b.HasIndex("ForumModelId");
 
-                    b.ToTable("General", (string)null);
+                    b.ToTable("General");
                 });
 
             modelBuilder.Entity("readit.Models.ReplyModel", b =>
@@ -280,7 +282,7 @@ namespace readit.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Replies", (string)null);
+                    b.ToTable("Replies");
                 });
 
             modelBuilder.Entity("readit.Models.TopicModel", b =>
@@ -299,7 +301,7 @@ namespace readit.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TopicModel", (string)null);
+                    b.ToTable("TopicModel");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

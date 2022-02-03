@@ -19,6 +19,12 @@ namespace readit.Controllers
             return View(await _appDbContext.General.ToListAsync());
         }
 
+        //public IEnumerable<GeneralModel> GetTopics()
+        //{
+        //    // id, name, description
+        //}
+
+
         public IActionResult Create()
         {
             return View();
