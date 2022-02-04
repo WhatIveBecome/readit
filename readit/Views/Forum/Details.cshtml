@@ -1,10 +1,10 @@
 ﻿@model readit.Models.ForumModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Forum";
 }
 
-<h1>Title: @Html.DisplayFor(model => model.Name)</h1>
+<h1>Forum: @Html.DisplayFor(model => model.Name)</h1>
 
 
 <table class="table text-light">
@@ -17,17 +17,23 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Topics)
+        @if (Model.Topics != null)
         {
-            <tr>
-                <td><a id="underline" asp-controller="Topic" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a></td>
-                <td>@item.Description</td>
-                <td>@item.ForumModelId</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
-                </td>
-            </tr>
+            @if (Model.Topics.Any())
+            {
+                @foreach (var item in Model.Topics)
+                {
+                    <tr>
+                        <td><a id="underline" asp-controller="Topic" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a></td>
+                        <td>@item.Description</td>
+                        <td>@item.ForumModelId</td>
+                        <td>
+                            <a asp-action="Edit" asp-controller="Topic" asp-route-id="@item.Id" class="btn btn-success">Edit</a>
+                            <a asp-action="Delete" asp-controller="Topic" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
         }
     </tbody>
 </table>

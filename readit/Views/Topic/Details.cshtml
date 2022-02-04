@@ -1,10 +1,10 @@
 ﻿@model readit.Models.TopicModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Topic";
 }
 
-<h1>Title: @Html.DisplayFor(model => model.Name)</h1>
+<h1>Topic: @Html.DisplayFor(model => model.Name)</h1>
 
 <div class="col-6">
     <br />
@@ -22,7 +22,7 @@
 <form asp-controller="Reply" asp-action="Reply">
 <textarea class="form-control mb-2" rows="2"></textarea>
     <div>
-        <a asp-action="Index" class="btn btn-dark">Back</a>
+        <a asp-controller="Reply" asp-action="Index" class="btn btn-dark">Back</a>
         <input type="submit" value="Reply" class="btn btn-primary" />
     </div>
 </form>
