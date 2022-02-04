@@ -20,7 +20,7 @@
         @foreach (var item in Model.Topics)
         {
             <tr>
-                <td><a id="underline" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a></td>
+                <td><a id="underline" asp-controller="Topic" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a></td>
                 <td>@item.Description</td>
                 <td>@item.ForumModelId</td>
                 <td>

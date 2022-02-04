@@ -70,11 +70,16 @@ namespace readit.Controllers
             await _appDbContext.SaveChangesAsync();
             return RedirectToAction("Index");
         }
-
         public async Task<IActionResult> Details(int? id)
         {
+            await _appDbContext.Replies.ToListAsync();
             var topicModel = await _appDbContext.Topics.FindAsync(id);
-            if (id == null || topicModel == null) return NotFound();
+
+            if (id == null || topicModel == null)
+            {
+                return NotFound();
+            }
+
             return View(topicModel);
         }
     }
