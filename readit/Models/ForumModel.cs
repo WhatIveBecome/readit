@@ -9,6 +9,5 @@ namespace readit.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public virtual IEnumerable<TopicModel> Topics { get; set; }
-        public virtual IEnumerable<ReplyModel> Replies { get; set; }
     }
 }
