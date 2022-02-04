@@ -8,6 +8,7 @@ namespace readit.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public virtual IEnumerable<TopicModel> Topics { get; set; } 
+        public virtual IEnumerable<TopicModel> Topics { get; set; }
+        public virtual IEnumerable<ReplyModel> Replies { get; set; }
     }
 }

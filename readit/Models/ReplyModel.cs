@@ -7,6 +7,10 @@ namespace readit.Models
         [Required]
         public int Id { get; set; }
         public string Description { get; set; }
-       // public IEnumerable<ReplyModel> Replies { get; set; }          
+        public int ForumModelId { get; set; }
+        public int TopicModelId { get; set; }
+        public virtual ForumModel ForumModel { get; set; }
+        public virtual TopicModel TopicModel { get; set; }
+        // forummodelid ?? 
     }
 }
