@@ -19,11 +19,6 @@ namespace readit.Controllers
             return View(await _appDbContext.Replies.ToListAsync());
         }
 
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
-
         [HttpPost]
         public async Task<IActionResult> Reply(ReplyModel replyModel)
         {

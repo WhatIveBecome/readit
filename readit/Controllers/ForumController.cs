@@ -32,7 +32,7 @@ namespace readit.Controllers
 
         public async Task<IActionResult> Details(int? id)
         {
-            await _appDbContext.General.ToListAsync();
+            await _appDbContext.Topics.ToListAsync();
             var forumModel = await _appDbContext.Forums.FindAsync(id);
 
             if (id == null || forumModel == null)

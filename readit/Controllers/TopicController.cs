@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using readit.Database;
 using readit.Models;
@@ -12,120 +7,55 @@ namespace readit.Controllers
 {
     public class TopicController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly AppDbContext _appDbContext;
 
-        public TopicController(AppDbContext context)
+        public TopicController(AppDbContext appDbContext)
         {
-            _context = context;
+            _appDbContext = appDbContext;
         }
 
-        // GET: Topic
         public async Task<IActionResult> Index()
         {
-            return View(await _context.TopicModel.ToListAsync());
+            return View(await _appDbContext.Topics.ToListAsync());
         }
 
-        // GET: Topic/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var topicModel = await _context.TopicModel.FirstOrDefaultAsync(m => m.Id == id);
-            if (topicModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(topicModel);
-        }
-
-        // GET: Topic/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Topic/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description")] TopicModel topicModel)
+        public async Task<IActionResult> Create(TopicModel topicModel)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(topicModel);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(topicModel);
+            _appDbContext.Add(topicModel);
+            await _appDbContext.SaveChangesAsync();
+            return RedirectToAction("Index");
         }
 
-        // GET: Topic/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var topicModel = await _context.TopicModel.FindAsync(id);
-            if (topicModel == null)
-            {
-                return NotFound();
-            }
-            return View(topicModel);
-        }
-
-        // POST: Topic/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description")] TopicModel topicModel)
-        {
-            if (id != topicModel.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(topicModel);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!TopicModelExists(topicModel.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(topicModel);
-        }
-
-        // GET: Topic/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
+            var topicModel = await _appDbContext.Topics.FindAsync(id);
+
+            if (id == null || topicModel == null)
             {
                 return NotFound();
             }
+            return View(topicModel);
+        }
 
-            var topicModel = await _context.TopicModel
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (topicModel == null)
+        [HttpPost]
+        public async Task<IActionResult> Delete(TopicModel topicModel)
+        {
+            _appDbContext.Remove(topicModel);
+            await _appDbContext.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> Edit (int? id)
+        {
+            var topicModel = await _appDbContext.Topics.FindAsync(id);
+
+            if (id == null || topicModel == null)
             {
                 return NotFound();
             }
@@ -133,20 +63,19 @@ namespace readit.Controllers
             return View(topicModel);
         }
 
-        // POST: Topic/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        [HttpPost]
+        public async Task<IActionResult> Edit (TopicModel topicModel)
         {
-            var topicModel = await _context.TopicModel.FindAsync(id);
-            _context.TopicModel.Remove(topicModel);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            _appDbContext.Topics.Update(topicModel);
+            await _appDbContext.SaveChangesAsync();
+            return RedirectToAction("Index");
         }
 
-        private bool TopicModelExists(int id)
+        public async Task<IActionResult> Details(int? id)
         {
-            return _context.TopicModel.Any(e => e.Id == id);
+            var topicModel = await _appDbContext.Topics.FindAsync(id);
+            if (id == null || topicModel == null) return NotFound();
+            return View(topicModel);
         }
     }
 }

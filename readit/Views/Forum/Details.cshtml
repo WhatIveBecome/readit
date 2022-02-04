@@ -1,6 +1,4 @@
-﻿@*@model IEnumerable<readit.Models.GeneralModel>*@
-
-@model readit.Models.ForumModel
+﻿@model readit.Models.ForumModel
 
 @{
     ViewData["Title"] = "Details";
@@ -8,10 +6,6 @@
 
 <h1>Title: @Html.DisplayFor(model => model.Name)</h1>
 
-@*<partial name="_PartialTopic" />*@
-
-
-@*@Html.Partial("_PartialTopic", new List<readit.Models.GeneralModel>())*@
 
 <table class="table text-light">
     <thead>
@@ -23,10 +17,9 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.GeneralModel)
+        @foreach (var item in Model.Topics)
         {
             <tr>
-                @*<td><a id="underline" asp-route-id="@item.Id" asp-controller="@item.Name" asp-action="Index">@Html.DisplayFor(modelItem => item.Name)</a></td>*@
                 <td><a id="underline" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a></td>
                 <td>@item.Description</td>
                 <td>@item.ForumModelId</td>
