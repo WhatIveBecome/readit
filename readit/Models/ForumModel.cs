@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace readit.Models
 {
@@ -9,5 +10,6 @@ namespace readit.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public virtual IEnumerable<TopicModel> Topics { get; set; }
+
     }
 }

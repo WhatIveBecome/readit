@@ -24,7 +24,7 @@ namespace readit.Controllers
         {
             _appDbContext.Add(replyModel);
             await _appDbContext.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", "Topic", new { id = replyModel.TopicModelId });
         }
     }
 }

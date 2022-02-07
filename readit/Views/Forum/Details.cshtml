@@ -3,16 +3,18 @@
 @{
     ViewData["Title"] = "Forum";
 }
-
+@*<button onclick="history.back()" class="btn btn-info">Back to forums</button> *@
+<a asp-action="Index" class="btn btn-info">Back to forums</a>
 <h1>Forum: @Html.DisplayFor(model => model.Name)</h1>
 
-
+<a asp-action="CreateTopic" asp-route-id="@Model.Id" class="btn btn-primary mb-2 mt-2">New Topic</a> 
+@*<a asp-controller="Topic" asp-action="Create" class="btn btn-primary mb-2 mt-2">New Topic</a> *@
+       
 <table class="table text-light">
     <thead>
         <tr>
             <th>Name</th>
             <th>Description</th>
-            <th>ForumId</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -26,7 +28,6 @@
                     <tr>
                         <td><a id="underline" asp-controller="Topic" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a></td>
                         <td>@item.Description</td>
-                        <td>@item.ForumModelId</td>
                         <td>
                             <a asp-action="Edit" asp-controller="Topic" asp-route-id="@item.Id" class="btn btn-success">Edit</a>
                             <a asp-action="Delete" asp-controller="Topic" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
@@ -37,3 +38,5 @@
         }
     </tbody>
 </table>
+
+        

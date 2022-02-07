@@ -19,17 +19,28 @@ namespace readit.Controllers
             return View(await _appDbContext.Topics.ToListAsync());
         }
 
-        public IActionResult Create()
-        {
-            return View();
-        }
+        //public IActionResult Create()
+        //{
+        //    return View();
+        //}
+        //public async Task<IActionResult> Create(int? id)
+        //{
+        //    var forumModel = await _appDbContext.Forums.FindAsync(id);
+        //    if (id == null || forumModel == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return View();
+        //}
 
         [HttpPost]
         public async Task<IActionResult> Create(TopicModel topicModel)
         {
-            _appDbContext.Add(topicModel);
+            //var forumModel = new ForumModel();
+            
+            _appDbContext.Topics.Add(topicModel);
             await _appDbContext.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", "Forum", new { id = topicModel.ForumModelId });
         }
 
         public async Task<IActionResult> Delete(int? id)
@@ -51,7 +62,7 @@ namespace readit.Controllers
             return RedirectToAction("Index");
         }
 
-        public async Task<IActionResult> Edit (int? id)
+        public async Task<IActionResult> Edit(int? id)
         {
             var topicModel = await _appDbContext.Topics.FindAsync(id);
 
@@ -64,7 +75,7 @@ namespace readit.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit (TopicModel topicModel)
+        public async Task<IActionResult> Edit(TopicModel topicModel)
         {
             _appDbContext.Topics.Update(topicModel);
             await _appDbContext.SaveChangesAsync();

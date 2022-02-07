@@ -240,7 +240,7 @@ namespace readit.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Forums");
+                    b.ToTable("Forums", (string)null);
                 });
 
             modelBuilder.Entity("readit.Models.InfoModel", b =>
@@ -259,7 +259,7 @@ namespace readit.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TopicModel");
+                    b.ToTable("TopicModel", (string)null);
                 });
 
             modelBuilder.Entity("readit.Models.ReplyModel", b =>
@@ -280,7 +280,7 @@ namespace readit.Migrations
 
                     b.HasIndex("TopicModelId");
 
-                    b.ToTable("Replies");
+                    b.ToTable("Replies", (string)null);
                 });
 
             modelBuilder.Entity("readit.Models.TopicModel", b =>
@@ -304,7 +304,7 @@ namespace readit.Migrations
 
                     b.HasIndex("ForumModelId");
 
-                    b.ToTable("Topics");
+                    b.ToTable("Topics", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

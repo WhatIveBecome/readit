@@ -1,0 +1,13 @@
+﻿@model readit.Models.ForumModel
+
+@{
+    ViewData["Title"] = "New Topic";
+}
+
+<a asp-controller="Forum" asp-action="Details" asp-route-id="@Model.Id" class="btn btn-info">Back to forum</a>
+
+<h1>Create New Topic</h1>
+
+<hr />
+
+<partial name="_PartialTopic" model="null" />

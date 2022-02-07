@@ -1,23 +1,51 @@
-﻿@model IEnumerable<readit.Models.TopicModel>
+﻿@model readit.Models.TopicModel
+@Html.DisplayFor(model => model.Name)
+<div class="row">
+    <div class="col-6">
+        <form asp-controller="Topic" asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <input asp-for="ForumModelId" value="@Model.Id" type="hidden" />
+                
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+         <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control"/>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+         @*   <div class="form-group">
+                <label asp-for="ForumModelId" class="control-label"></label>
+                <input asp-for="ForumModelId" class="form-control"/>
+            </div>*@
+            <br />
 
-<table class="table text-light">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-               @*<td><a id="underline" asp-route-id="@item.Id" asp-controller="@item.Name" asp-action="Index">@Html.DisplayFor(modelItem => item.Name)</a></td>*@
-                <td><a id="underline" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a></td>
-                <td>@item.Description</td>
-                <td><a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a></td>
-            </tr>
-        }
-    </tbody>
-</table>
+
+            @*// TODO ADD VALIDATION*@
+
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox">
+                <label class="form-check-label">
+                    I accept <a>rules</a>
+                </label>
+            </div>
+            <br />
+
+            <div class="form-group">
+                
+                @*<a asp-action="Index" class="btn btn-dark">Back</a>     *@   
+                 @*zrobic to view bagiem*@ @*value="@Model.ForumModelId"*@
+                @*<input value="@Context.Request.Query["ForumModelId"]" @Html.DisplayFor(model => model.ForumModelId) />*@
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

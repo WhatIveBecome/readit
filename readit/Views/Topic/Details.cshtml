@@ -3,7 +3,8 @@
 @{
     ViewData["Title"] = "Topic";
 }
-
+<a asp-controller="Forum" asp-action="Details" asp-route-id="@Model.ForumModelId" class="btn btn-info">Back to forum</a>
+@*<button onclick="history.back()" class="btn btn-info">Back to forum</button> *@
 <h1>Topic: @Html.DisplayFor(model => model.Name)</h1>
 
 <div class="col-6">
@@ -12,17 +13,16 @@
         @Html.DisplayFor(model => model.Description)
     </div>
 </div>
-@foreach (var item in Model.Replies)
+@if (Model.Replies != null)
 {
-    <div class="border border-primary p-4 mb-4">
-        @item.Description
-    </div>
+    @if (Model.Replies.Any())
+    {
+        @foreach (var item in Model.Replies)
+        {
+            <div class="border border-primary p-4 mb-4">
+                @item.Description
+            </div>
+        }
+    }
 }
-
-<form asp-controller="Reply" asp-action="Reply">
-<textarea class="form-control mb-2" rows="2"></textarea>
-    <div>
-        <a asp-controller="Reply" asp-action="Index" class="btn btn-dark">Back</a>
-        <input type="submit" value="Reply" class="btn btn-primary" />
-    </div>
-</form>
+<partial name="_PartialReply" model="null" />

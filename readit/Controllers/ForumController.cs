@@ -22,6 +22,26 @@ namespace readit.Controllers
             return View();
         }
 
+        public async Task<IActionResult> CreateTopic(int? id)
+        {
+            var forumModel = await _appDbContext.Forums.FindAsync(id);
+            if (id == null || forumModel == null)
+            {
+                return NotFound();
+            }
+            return View(forumModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateTopic(TopicModel topicModel)
+        {
+            //await _appDbContext.Forums.FindAsync(id);
+            topicModel.ForumModelId = 41;
+            _appDbContext.Topics.Add(topicModel);
+            await _appDbContext.SaveChangesAsync();
+            return RedirectToAction("Details", "Forum", new { id = topicModel.ForumModelId });
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create(ForumModel forumModel)
         {
