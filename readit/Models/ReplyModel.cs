@@ -9,6 +9,5 @@ namespace readit.Models
         public string Description { get; set; }
         public int TopicModelId { get; set; }
         public virtual TopicModel TopicModel { get; set; }
-        // forummodelid ?? 
     }
 }

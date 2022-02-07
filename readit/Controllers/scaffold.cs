@@ -10,11 +10,11 @@ using readit.Models;
 
 namespace readit.Controllers
 {
-    public class InfoController : Controller
+    public class scaffold : Controller
     {
         private readonly AppDbContext _context;
 
-        public InfoController(AppDbContext context)
+        public scaffold(AppDbContext context)
         {
             _context = context;
         }

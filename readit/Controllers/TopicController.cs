@@ -19,20 +19,6 @@ namespace readit.Controllers
             return View(await _appDbContext.Topics.ToListAsync());
         }
 
-        //public IActionResult Create()
-        //{
-        //    return View();
-        //}
-        //public async Task<IActionResult> Create(int? id)
-        //{
-        //    var forumModel = await _appDbContext.Forums.FindAsync(id);
-        //    if (id == null || forumModel == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return View();
-        //}
-
         [HttpPost]
         public async Task<IActionResult> Create(TopicModel topicModel)
         {

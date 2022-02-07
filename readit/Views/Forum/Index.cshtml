@@ -7,7 +7,6 @@
 <table class="table text-light">
     <thead>
         <tr>
-            <th>Id</th>
             <th>Name</th>
             <th>Description</th>
             <th>Actions</th>
@@ -18,7 +17,6 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.Id</td>
                 <td><a id="underline" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a></td>
                 <td>@item.Description</td>
                 <td><a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">Edit</a>

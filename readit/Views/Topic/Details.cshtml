@@ -4,7 +4,6 @@
     ViewData["Title"] = "Topic";
 }
 <a asp-controller="Forum" asp-action="Details" asp-route-id="@Model.ForumModelId" class="btn btn-info">Back to forum</a>
-@*<button onclick="history.back()" class="btn btn-info">Back to forum</button> *@
 <h1>Topic: @Html.DisplayFor(model => model.Name)</h1>
 
 <div class="col-6">

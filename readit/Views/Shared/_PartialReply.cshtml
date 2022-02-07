@@ -3,11 +3,12 @@
 <form asp-controller="Reply" asp-action="Reply">
 <textarea asp-for="Description" class="form-control mb-2" rows="2"></textarea>
  <div class="form-group">
-                <label asp-for="TopicModelId" class="control-label"></label>
-                <input asp-for="TopicModelId" class="form-control"/>
+                <input class="inputId" type="hidden" asp-for="TopicModelId" class="form-control"/>
             </div>
     <div>
         @*<a asp-controller="Topic" asp-action="Index" class="btn btn-dark">Back</a>*@
         <input type="submit" value="Reply" class="btn btn-primary" />
     </div>
 </form>
+
+<script src="~/js/script.js"></script>
