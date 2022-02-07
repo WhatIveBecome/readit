@@ -22,7 +22,6 @@ namespace readit.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(TopicModel topicModel)
         {
-            //var forumModel = new ForumModel();
             
             _appDbContext.Topics.Add(topicModel);
             await _appDbContext.SaveChangesAsync();
@@ -65,8 +64,9 @@ namespace readit.Controllers
         {
             _appDbContext.Topics.Update(topicModel);
             await _appDbContext.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", "Forum", new { id = topicModel.ForumModelId });
         }
+
         public async Task<IActionResult> Details(int? id)
         {
             await _appDbContext.Replies.ToListAsync();
