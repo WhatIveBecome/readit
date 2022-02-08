@@ -28,23 +28,13 @@ namespace readit.Controllers
             return RedirectToAction("Details", "Forum", new { id = topicModel.ForumModelId });
         }
 
-        public async Task<IActionResult> Delete(int? id)
-        {
-            var topicModel = await _appDbContext.Topics.FindAsync(id);
-
-            if (id == null || topicModel == null)
-            {
-                return NotFound();
-            }
-            return View(topicModel);
-        }
-
         [HttpPost]
         public async Task<IActionResult> Delete(TopicModel topicModel)
         {
+
             _appDbContext.Remove(topicModel);
             await _appDbContext.SaveChangesAsync();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Forum");
         }
 
         public async Task<IActionResult> Edit(int? id)

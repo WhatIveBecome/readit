@@ -83,18 +83,6 @@ namespace readit.Controllers
             return RedirectToAction("Index");
         }
 
-        public async Task<IActionResult> Delete(int? id)
-        {
-            var forumModel = await _appDbContext.Forums.FindAsync(id);
-
-            if (id == null || forumModel == null)
-            {
-                return NotFound();
-            }
-
-            return View(forumModel);
-        }
-
         [HttpPost]
         public async Task<IActionResult> Delete(ForumModel forumModel)
         {
