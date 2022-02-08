@@ -64,7 +64,7 @@ namespace readit.Controllers
         {           
             _appDbContext.Topics.Update(topicModel);
             await _appDbContext.SaveChangesAsync();
-            return RedirectToAction("Index", "Forum");
+            return RedirectToAction("Details", "Forum", new { id = topicModel.ForumModelId });
         }
 
         public async Task<IActionResult> Details(int? id)

@@ -3,7 +3,8 @@
 @{
     ViewData["Title"] = "Edit";
 }
-<a asp-controller="Forum" asp-action="Index" class="btn btn-info">Back to forums</a>
+@*<a asp-controller="Forum" asp-action="Index" class="btn btn-info">Back to forums</a>*@
+<button class="btn btn-info" onclick="history.back()">Back to forum</button>
 
 <h1>Edit</h1>
 
