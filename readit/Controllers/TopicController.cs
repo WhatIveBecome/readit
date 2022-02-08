@@ -61,10 +61,10 @@ namespace readit.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Edit(TopicModel topicModel)
-        {
+        {           
             _appDbContext.Topics.Update(topicModel);
             await _appDbContext.SaveChangesAsync();
-            return RedirectToAction("Details", "Forum", new { id = topicModel.ForumModelId });
+            return RedirectToAction("Index", "Forum");
         }
 
         public async Task<IActionResult> Details(int? id)
