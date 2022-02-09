@@ -31,7 +31,6 @@ namespace readit.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(TopicModel topicModel)
         {
-
             _appDbContext.Remove(topicModel);
             await _appDbContext.SaveChangesAsync();
             return RedirectToAction("Index", "Forum");
