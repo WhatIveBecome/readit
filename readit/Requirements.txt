@@ -1,0 +1,20 @@
+﻿Wymagania projektowe:
+
+● UI, back-end, przechowywanie danych (wykorzystanie bazy danych) <DONE>
+● Wstrzykiwanie zależności <DONE>
+● Widok / komponent komunikujący się z serwerem za pomocą AJAX
+● Obsługa błędów w sposób przyjazny dla użytkownika
+● Bezpieczeństwo aplikacji, walidacja danych wejściowych
+● Dobre praktyki, “czysty kod"
+● Realizacja projektu: więcej niż CRUD na jednej encji
+
+Opcjonalnie:
+
+● Logowanie do pliku (“obserwowalność” aplikacji)
+● Wielojęzyczność
+● Web sockets
+● TypeScript / Single Page App
+● SASS / SCSS
+● Konfigurowalność aplikacji na różne środowiska (testowe, produkcyjne)
+● Continuous Integration / Continuous Delivery
+● Hostowanie w Azure / inny dostawca

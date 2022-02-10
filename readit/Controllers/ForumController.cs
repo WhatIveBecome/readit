@@ -35,7 +35,6 @@ namespace readit.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateTopic(TopicModel topicModel)
         {
-            //await _appDbContext.Forums.FindAsync(id);
             topicModel.ForumModelId = 41;
             _appDbContext.Topics.Add(topicModel);
             await _appDbContext.SaveChangesAsync();
