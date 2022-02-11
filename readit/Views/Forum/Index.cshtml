@@ -24,7 +24,7 @@
                     <a class="btn btn-danger" id="del">Delete</a>
                     <div class="confirm hidden">
                         <h1>Are you sure?</h1>
-                        <form asp-action="Delete" asp-controller="Forum" asp-route-id="@item.Id">
+                        <form method="POST" asp-action="Delete" asp-controller="Forum" asp-route-id="@item.Id">
                             <input type="submit" value="Yes" class="btn btn-danger" />
                             <a class="btn btn-secondary" id="no">No</a>
                         </form>
@@ -38,3 +38,4 @@
 <div class="overlay hidden"></div>
 
 <script src="~/js/delete.js"></script>
+@*<script src="~/js/deleteAlert.jjs"></script>*@

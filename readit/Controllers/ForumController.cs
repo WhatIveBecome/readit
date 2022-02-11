@@ -81,12 +81,13 @@ namespace readit.Controllers
             await _appDbContext.SaveChangesAsync();
             return RedirectToAction("Index");
         }
-
+        [Route("api/forum")]
         [HttpPost]
         public async Task<IActionResult> Delete(ForumModel forumModel)
         {
             _appDbContext.Forums.Remove(forumModel);
             await _appDbContext.SaveChangesAsync();
+            //return Ok();
             return RedirectToAction("Index");
         }
     }

@@ -1,11 +1,17 @@
 ﻿'use strict';
 
-const btnDel = document.getElementById('del');
+const btnDelete = document.querySelector('aw');
 const confirmWindow = document.querySelector('.confirm');
 const overlay = document.querySelector('.overlay');
 const btnNo = document.getElementById('no');
 
+//var el = document.querySelectorAll(".the_class")
+//for (var i = 0, ilen = el.length - 1; i < ilen; i++) {
+//    el[i].className = "a_new_class"
+//}
+
 const showConfirm = function () {
+    console.log('hi');
     confirmWindow.classList.remove('hidden');
     overlay.classList.remove('hidden');
 };
@@ -15,5 +21,6 @@ const closeConfirm = function () {
     overlay.classList.add('hidden');
 };
 
-btnDel.addEventListener('click', showConfirm);
+btnDelete.addEventListener('click', showConfirm);
 btnNo.addEventListener('click', closeConfirm);
+console.log('hi');
