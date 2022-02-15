@@ -16,6 +16,7 @@
         <tr>
             <th>Name</th>
             <th>Description</th>
+            <th>Number of Topics</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -26,6 +27,7 @@
             <tr>
                 <td><a id="underline" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a></td>
                 <td>@item.Description</td>
+                <td>@item.NumberOfTopics</td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">Edit</a>
                     <a class="del btn btn-danger">Delete</a>

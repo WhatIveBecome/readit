@@ -12,20 +12,19 @@ namespace readit.Controllers
         {
             _appDbContext = appDbContext;
         }
-        public async Task<IActionResult> Index(string name)
+        public async Task<IActionResult> Index(string name, ForumModel forumModel)
         {
-            await _appDbContext.Forums.ToListAsync();
-
+            forumModel.NumberOfTopics = forumModel.Topics?.Count() ?? 0;
+         
             IQueryable<ForumModel> search = _appDbContext.Forums;
 
             if (!string.IsNullOrEmpty(name))
             {
                 search = search.Where(x => x.Name.Contains(name));
             }
-            var forumModel = await search.ToListAsync();
-
-            return View(forumModel);
-            //return View(await _appDbContext.Forums.ToListAsync());
+            var forums = await search.ToListAsync();
+            
+            return View(forums);
         }
 
         public IActionResult Create()
