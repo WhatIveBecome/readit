@@ -5,13 +5,13 @@
 }
 
 <div>
-    <a asp-controller="Forum" asp-action="Index"><img src="https://img.icons8.com/material-outlined/48/000000/back--v1.png" /></a>
+    <a asp-action="Index"><img src="https://img.icons8.com/material-outlined/48/000000/back--v1.png" /></a>
     <h1>Forum: @Html.DisplayFor(model => model.Name)</h1>
 </div>
 
-<a asp-controller="Forum" asp-action="CreateTopic" asp-route-id="@Model.Id" class="btn btn-primary mb-2 mt-2">New Topic</a>
+<a asp-action="CreateTopic" asp-route-id="@Model.Id" class="btn btn-primary mb-2 mt-2">New Topic</a>
 
-<form asp-controller="Forum" asp-action="Details" asp-route-id="@Context.Request.RouteValues["id"]" class="col-3 mt-4">
+<form asp-action="SearchTopic" asp-route-id="@Context.Request.RouteValues["id"]" class="col-3 mt-4">
     <div class="input-group">
         <input type="text" name="name" placeholder="Name" class="form-control" />
         <button type="submit" class="btn btn-primary ml-2">Search</button>

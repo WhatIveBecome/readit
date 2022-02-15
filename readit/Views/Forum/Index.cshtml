@@ -4,6 +4,13 @@
 
 <a asp-action="Create" class="btn btn-primary mb-2 mt-2">New Forum</a>
 
+<form asp-action="Index" class="col-3 mt-4">
+    <div class="input-group">
+        <input type="text" name="name" placeholder="Name" class="form-control" />
+        <button type="submit" class="btn btn-primary ml-2">Search</button>
+    </div>
+</form>
+
 <table class="table text-light">
     <thead>
         <tr>
@@ -38,4 +45,3 @@
 <div class="overlay hidden"></div>
 
 <script src="~/js/deleteItem.js"></script>
-@*<script src="~/js/deleteAlert.js"></script>*@

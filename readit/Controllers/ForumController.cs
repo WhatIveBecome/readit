@@ -12,9 +12,20 @@ namespace readit.Controllers
         {
             _appDbContext = appDbContext;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string name)
         {
-            return View(await _appDbContext.Forums.ToListAsync());
+            await _appDbContext.Forums.ToListAsync();
+
+            IQueryable<ForumModel> search = _appDbContext.Forums;
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                search = search.Where(x => x.Name.Contains(name));
+            }
+            var forumModel = await search.ToListAsync();
+
+            return View(forumModel);
+            //return View(await _appDbContext.Forums.ToListAsync());
         }
 
         public IActionResult Create()
@@ -35,7 +46,6 @@ namespace readit.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateTopic(TopicModel topicModel)
         {
-            topicModel.ForumModelId = 41;
             _appDbContext.Topics.Add(topicModel);
             await _appDbContext.SaveChangesAsync();
             return RedirectToAction("Details", "Forum", new { id = topicModel.ForumModelId });
@@ -53,12 +63,19 @@ namespace readit.Controllers
         {
             await _appDbContext.Topics.ToListAsync();
             var forumModel = await _appDbContext.Forums.FindAsync(id);
-
             if (id == null || forumModel == null)
             {
                 return NotFound();
             }
 
+            //IQueryable<ForumModel> search = _appDbContext.Forums;
+
+            //if (!string.IsNullOrEmpty(name))
+            //{
+            //    search = search.Where(x => x.Name.Contains(name));
+            //}
+            //var topicModel = await search.FirstOrDefaultAsync(i => i.Id == id.Value);
+            
             return View(forumModel);
         }
 
@@ -81,13 +98,12 @@ namespace readit.Controllers
             await _appDbContext.SaveChangesAsync();
             return RedirectToAction("Index");
         }
-        [Route("api/forum")]
+        
         [HttpPost]
         public async Task<IActionResult> Delete(ForumModel forumModel)
         {
             _appDbContext.Forums.Remove(forumModel);
             await _appDbContext.SaveChangesAsync();
-            //return Ok();
             return RedirectToAction("Index");
         }
     }

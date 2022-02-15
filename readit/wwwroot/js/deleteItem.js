@@ -1,4 +1,4 @@
-﻿'use strict';
+﻿"use strict";
 
 const btnDelete = document.querySelectorAll('.del');
 const confirmWindow = document.querySelector('.confirm');
