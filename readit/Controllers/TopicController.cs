@@ -25,6 +25,7 @@ namespace readit.Controllers
             
             _appDbContext.Topics.Add(topicModel);
             await _appDbContext.SaveChangesAsync();
+            TempData["success"] = "Topic successfully created";
             return RedirectToAction("Details", "Forum", new { id = topicModel.ForumModelId });
         }
 
@@ -33,6 +34,7 @@ namespace readit.Controllers
         {
             _appDbContext.Remove(topicModel);
             await _appDbContext.SaveChangesAsync();
+            TempData["success"] = "Topic successfully deleted";
             return RedirectToAction("Index", "Forum");
         }
 
@@ -53,6 +55,7 @@ namespace readit.Controllers
         {
             _appDbContext.Topics.Update(topicModel);
             await _appDbContext.SaveChangesAsync();
+            TempData["success"] = "Topic successfully modified";
             return RedirectToAction("Details", "Forum", new { id = topicModel.ForumModelId });
         }
 

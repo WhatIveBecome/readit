@@ -43,18 +43,11 @@ namespace readit.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateTopic(TopicModel topicModel)
-        {
-            _appDbContext.Topics.Add(topicModel);
-            await _appDbContext.SaveChangesAsync();
-            return RedirectToAction("Details", "Forum", new { id = topicModel.ForumModelId });
-        }
-
-        [HttpPost]
         public async Task<IActionResult> Create(ForumModel forumModel)
         {
             _appDbContext.Forums.Add(forumModel);
             await _appDbContext.SaveChangesAsync();
+            TempData["success"] = "Forum successfully created";
             return RedirectToAction("Index");
         }
 
@@ -95,6 +88,7 @@ namespace readit.Controllers
         {
             _appDbContext.Forums.Update(forumModel);
             await _appDbContext.SaveChangesAsync();
+            TempData["success"] = "Forum successfully modified";
             return RedirectToAction("Index");
         }
         
@@ -103,6 +97,7 @@ namespace readit.Controllers
         {
             _appDbContext.Forums.Remove(forumModel);
             await _appDbContext.SaveChangesAsync();
+            TempData["success"] = "Forum successfully deleted";
             return RedirectToAction("Index");
         }
     }

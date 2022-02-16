@@ -24,6 +24,7 @@ namespace readit.Controllers
         {
             _appDbContext.Add(replyModel);
             await _appDbContext.SaveChangesAsync();
+            TempData["success"] = "Reply successfully added";
             return RedirectToAction("Details", "Topic", new { id = replyModel.TopicModelId });
         }
     }
