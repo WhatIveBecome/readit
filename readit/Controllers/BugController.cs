@@ -2,7 +2,7 @@
 
 namespace readit.Models
 {
-    public class ProblemController : Controller
+    public class BugController : Controller
     {
         public IActionResult Index()
         {

@@ -35,7 +35,7 @@ namespace readit.Controllers
             _appDbContext.Remove(topicModel);
             await _appDbContext.SaveChangesAsync();
             TempData["success"] = "Topic successfully deleted";
-            return RedirectToAction("Index", "Forum");
+            return RedirectToAction("Index", "Forum"); // Action Back to previous id??
         }
 
         public async Task<IActionResult> Edit(int? id)
