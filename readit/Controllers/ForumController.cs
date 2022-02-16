@@ -93,8 +93,14 @@ namespace readit.Controllers
         }
         
         [HttpPost]
-        public async Task<IActionResult> Delete(ForumModel forumModel)
+        public async Task<IActionResult> Delete(int? id)
         {
+            var forumModel = await _appDbContext.Forums.FindAsync(id);
+
+            if (id == null || forumModel == null)
+            {
+                return NotFound();
+            }
             _appDbContext.Forums.Remove(forumModel);
             await _appDbContext.SaveChangesAsync();
             TempData["success"] = "Forum successfully deleted";
