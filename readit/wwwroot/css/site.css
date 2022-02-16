@@ -84,6 +84,7 @@ a:hover, #underline:hover {
     display: none;
 }
 
-/*h1 {
+h1 {
     display: inline-block;
-}*/
+    margin-right: 10px;
+}
