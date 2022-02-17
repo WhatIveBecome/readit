@@ -6,7 +6,7 @@
 
 <div class="mb-2 mt-4">
     <div class="row">
-        <div class="col-7">
+        <div class="col-8">
             <a asp-action="Create" class="btn btn-primary">New Forum</a>
         </div>
         <form asp-action="Index" class="col-3 text-end">
@@ -20,6 +20,7 @@
 <table class="table text-light">
     <thead>
         <tr>
+            <th>#</th>
             <th>Name</th>
             <th>Description</th>
             <th>Number of Topics</th>
@@ -31,6 +32,8 @@
         @foreach (var item in Model)
         {
             <tr>
+                @*<td><div style="background-image: url(@item.ImageUrl); background-size:100%"></div></td>*@
+                <td><img src="@item.ImageUrl" width="25"/></td>
                 <td><a id="underline" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a></td>
                 <td>@item.Description</td>
                 <td>@item.NumberOfTopics</td>

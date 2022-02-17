@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using readit.Database;
 
@@ -11,9 +12,10 @@ using readit.Database;
 namespace readit.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220217124530_addingForumImage")]
+    partial class addingForumImage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -253,7 +255,6 @@ namespace readit.Migrations
                         {
                             Id = 1,
                             Description = "Basic informations",
-                            ImageUrl = "/images/i2.png",
                             Name = "General discussion",
                             NumberOfTopics = 0
                         },
@@ -261,7 +262,7 @@ namespace readit.Migrations
                         {
                             Id = 2,
                             Description = "Forum inteded for the C programming language",
-                            ImageUrl = "/images/c.png",
+                            ImageUrl = "~/images/C.png",
                             Name = "C",
                             NumberOfTopics = 0
                         },
@@ -269,7 +270,6 @@ namespace readit.Migrations
                         {
                             Id = 3,
                             Description = "Forum inteded for the C++ programming language",
-                            ImageUrl = "/images/c2.png",
                             Name = "C++",
                             NumberOfTopics = 0
                         },
@@ -277,7 +277,6 @@ namespace readit.Migrations
                         {
                             Id = 4,
                             Description = "Forum inteded for the C# programming language",
-                            ImageUrl = "/images/c3.png",
                             Name = "C#",
                             NumberOfTopics = 0
                         },
@@ -285,7 +284,6 @@ namespace readit.Migrations
                         {
                             Id = 5,
                             Description = "Forum inteded for the HyperText Markup Language",
-                            ImageUrl = "/images/html.png",
                             Name = "HTML",
                             NumberOfTopics = 0
                         },
@@ -293,7 +291,6 @@ namespace readit.Migrations
                         {
                             Id = 6,
                             Description = "Forum inteded for the Cascading Style Sheets",
-                            ImageUrl = "/images/css.png",
                             Name = "CSS",
                             NumberOfTopics = 0
                         },
@@ -301,7 +298,6 @@ namespace readit.Migrations
                         {
                             Id = 7,
                             Description = "Forum inteded for the JavaScript programming language",
-                            ImageUrl = "/images/js.png",
                             Name = "JS",
                             NumberOfTopics = 0
                         });
