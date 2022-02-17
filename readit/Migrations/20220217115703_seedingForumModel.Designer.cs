@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using readit.Database;
 
@@ -11,9 +12,10 @@ using readit.Database;
 namespace readit.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220217115703_seedingForumModel")]
+    partial class seedingForumModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -249,8 +251,8 @@ namespace readit.Migrations
                         new
                         {
                             Id = 1,
-                            Description = "Basic informations",
-                            Name = "General discussion",
+                            Description = "Ask questions and give answers related with the C language",
+                            Name = "C",
                             NumberOfTopics = 0
                         });
                 });

@@ -1,7 +1,7 @@
 ﻿Wymagania projektowe:
 
-● UI, back-end, przechowywanie danych (wykorzystanie bazy danych) <DONE>
-● Wstrzykiwanie zależności <DONE>
+● UI, back-end, przechowywanie danych (wykorzystanie bazy danych) [DONE]
+● Wstrzykiwanie zależności [DONE]
 ● Widok / komponent komunikujący się z serwerem za pomocą AJAX
 ● Obsługa błędów w sposób przyjazny dla użytkownika
 ● Bezpieczeństwo aplikacji, walidacja danych wejściowych

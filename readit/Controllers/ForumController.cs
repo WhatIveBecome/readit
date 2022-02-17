@@ -12,19 +12,29 @@ namespace readit.Controllers
         {
             _appDbContext = appDbContext;
         }
-        public async Task<IActionResult> Index(string name, ForumModel forumModel)
+        public async Task<IActionResult> Index(string name)
         {
-            forumModel.NumberOfTopics = forumModel.Topics?.Count() ?? 0;
-         
-            IQueryable<ForumModel> search = _appDbContext.Forums;
+            //IQueryable<ForumModel> search = _appDbContext.Forums;
+            //var forumModel = new ForumModel();
+            ////var counterModel = new CounterModel()
 
-            if (!string.IsNullOrEmpty(name))
-            {
-                search = search.Where(x => x.Name.Contains(name));
-            }
-            var forums = await search.ToListAsync();
-            
-            return View(forums);
+            //forumModel.NumberOfTopics = forumModel.Topics?.Count() ?? 0; // upchnac w forums
+
+            //if (!string.IsNullOrEmpty(name))
+            //{
+            //    search = search.Where(x => x.Name.Contains(name));
+            //}
+            //var forums = await search.ToListAsync();
+
+            //return View(forums);
+
+            var forumModel = new ForumModel();
+            forumModel.NumberOfTopics = forumModel.Topics?.Count() ?? 0;
+            //_appDbContext.Forums.Update(forumModel);
+            //await _appDbContext.SaveChangesAsync();
+            var toList = await _appDbContext.Forums.ToListAsync();
+
+            return View(toList);
         }
 
         public IActionResult Create()
@@ -67,12 +77,12 @@ namespace readit.Controllers
             //    search = search.Where(x => x.Name.Contains(name));
             //}
             //var topicModel = await search.FirstOrDefaultAsync(i => i.Id == id.Value);
-            
+
             return View(forumModel);
         }
 
         public async Task<IActionResult> Edit(int? id)
-        {        
+        {
             var forumModel = await _appDbContext.Forums.FindAsync(id);
 
             if (id == null || forumModel == null)
@@ -91,7 +101,7 @@ namespace readit.Controllers
             TempData["success"] = "Forum successfully modified";
             return RedirectToAction("Index");
         }
-        
+
         [HttpPost]
         public async Task<IActionResult> Delete(ForumModel forumModel)
         {
