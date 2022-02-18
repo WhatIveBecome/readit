@@ -2,18 +2,18 @@
 
 <form asp-controller="Reply" asp-action="Reply">
     <div class="col-6">
-<textarea asp-for="Description" class="form-control mb-2 " rows="2" id="reply"></textarea>
+<textarea asp-for="Description" class="form-control mb-2 " rows="4" id="reply"></textarea>
     </div>
     <div class="form-group">
         <input type="hidden" class="inputId" asp-for="TopicModelId" class="form-control" value="@Context.Request.RouteValues["id"]" />
     </div>
     <div>
-        <input type="submit" value="Reply" class="btn btn-primary" />
+        <input type="submit" value="Reply" class="btn btn-primary col-2" />
     </div>
 </form>
 
 <div class="col-6 p-4 mt-3 border border-danger" id="rules">
-    Please make sure that you follow our community <a>rules</a>    
+    Please make sure that you follow our community <u><a asp-controller="Home" asp-action="Rules" target="_blank">rules</a></u>   
     <button id="rulesOk">OK!</button>
 </div>
 

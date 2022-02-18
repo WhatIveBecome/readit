@@ -29,19 +29,19 @@
                             <a class="nav-link text-light" asp-area="" asp-controller="Forum" asp-action="Index">Forums</a>
                         </li>
                          <li class="nav-item">
-                            <a class="nav-link text-light">Development</a>
+                            <a class="nav-link text-light" asp-action="Development" asp-controller="Home">Development</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light">Features</a>
+                            <a class="nav-link text-light" asp-action="Features" asp-controller="Home">Features</a>
                         </li>
                          <li class="nav-item">
-                            <a class="nav-link text-light" asp-action="Index" asp-controller="Bug">Bugs</a>
+                            <a class="nav-link text-light" asp-action="Bugs" asp-controller="Home">Bugs</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light">Review</a>
+                            <a class="nav-link text-light" asp-action="Review" asp-controller="Home">Review</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light">Accounts</a>
+                            <a class="nav-link text-light" asp-action="Accounts" asp-controller="Home">Accounts</a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
@@ -58,7 +58,7 @@
 
     <footer class="border-top footer">
         <div class="container">
-            &copy; 2022 - readit - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2022 - readit - <a asp-area="" asp-controller="Home" asp-action="Rules">Rules</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

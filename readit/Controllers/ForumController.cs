@@ -29,9 +29,10 @@ namespace readit.Controllers
             //return View(forums);
 
             var forumModel = new ForumModel();
-            forumModel.NumberOfTopics = forumModel.Topics?.Count() ?? 0;
+            //forumModel.NumberOfTopics = forumModel.Topics?.Count() ?? 0;
             //_appDbContext.Forums.Update(forumModel);
             //await _appDbContext.SaveChangesAsync();
+            ViewBag.Counter = forumModel.Topics?.Count() ?? 0;
             var toList = await _appDbContext.Forums.ToListAsync();
 
             return View(toList);

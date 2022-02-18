@@ -18,7 +18,7 @@ namespace readit.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Rules()
         {
             return View();
         }
@@ -27,6 +27,31 @@ namespace readit.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult Development()
+        {
+            return View();
+        }
+
+        public IActionResult Features()
+        {
+            return View();
+        }
+
+        public IActionResult Bugs()
+        {
+            return View();
+        }
+
+        public IActionResult Review()
+        {
+            return View();
+        }
+
+        public IActionResult Accounts()
+        {
+            return View();
         }
     }
 }

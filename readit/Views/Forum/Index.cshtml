@@ -1,12 +1,14 @@
 ﻿ @model IEnumerable<readit.Models.ForumModel>
 
-<div>
-    <h1>Forums</h1>
-</div>
+@{
+    ViewData["Title"] = "Forums";
+}
+
+<h1>@ViewData["Title"]</h1>
 
 <div class="mb-2 mt-4">
     <div class="row">
-        <div class="col-8">
+        <div class="col-9">
             <a asp-action="Create" class="btn btn-primary">New Forum</a>
         </div>
         <form asp-action="Index" class="col-3 text-end">
@@ -36,7 +38,7 @@
                 <td><img src="@item.ImageUrl" width="25" /></td>
                 <td><a id="underline" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a></td>
                 <td>@item.Description</td>
-                <td>@item.NumberOfTopics</td>
+                <td>@ViewBag.Counter</td>
                 <td>
                     <form method="POST" asp-controller="Forum" asp-action="Delete" asp-route-id="@item.Id">
                         <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
