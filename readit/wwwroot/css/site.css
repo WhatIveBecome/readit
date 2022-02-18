@@ -17,7 +17,6 @@ body {
     color: wheat;
     margin-bottom: 60px;
     background-color: #18242ef6;
-
     /*#1A1A1B
       #0d1117
       #18242ef6
@@ -49,9 +48,8 @@ a:hover, #underline:hover {
     opacity: 85%;
 }
 
-#rules{
+#rules {
     display: none;
-
 }
 
 .confirm {
@@ -89,7 +87,7 @@ h1 {
     margin-right: 10px;
 }
 
-.main{
+.main {
     font-size: 25px;
     padding: 50px;
     margin: 0px 200px 0px 200px;
@@ -99,4 +97,36 @@ h1 {
     font-size: 25px;
     margin-top: 20px;
     width: 50%;
+}
+
+table {
+    font-size: 18px;
+    color: wheat;
+    border-collapse: collapse;
+    margin: 1vw auto;
+    border: 2px solid black;
+    width: 100%;
+}
+
+table th {
+    color: white;
+    border: 2px solid black;
+    text-align: center;
+    padding: 0.3vw;
+    background-color: #353a3d;
+}
+
+table td {
+    border: 2px solid black;
+    text-align: center;
+    padding: 0.2vw 0.5vw;
+}
+
+table tr:nth-child(odd) td {
+    background-color: #353a3d;
+}
+
+.com {
+    width: 100%;
+    height: 50%;
 }

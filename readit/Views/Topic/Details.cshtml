@@ -3,26 +3,28 @@
 @{
     ViewData["Title"] = "Topic";
 }
-<div>
-    <a asp-controller="Forum" asp-action="Details" asp-route-id="@Model.ForumModelId"><h1 class="bi bi-arrow-left-circle"></h1></a>
-    <h1>Topic: @Html.DisplayFor(model => model.Name)</h1>
-</div>
-<div class="col-6">
-    <br />
-    <div class="border border-primary p-4 mb-4">
-        @Html.DisplayFor(model => model.Description)
+<div class="container2">
+    <div>
+        <a asp-controller="Forum" asp-action="Details" asp-route-id="@Model.ForumModelId"><h1 class="bi bi-arrow-left-circle"></h1></a>
+        <h1>Topic: @Html.DisplayFor(model => model.Name)</h1>
     </div>
-</div>
-@if (Model.Replies != null)
-{
-    @if (Model.Replies.Any())
+    <div class="col-7">
+        <br />
+        <div class="border border-danger p-4 mb-2">
+            @Html.DisplayFor(model => model.Description)
+        </div>
+    </div>
+    @if (Model.Replies != null)
     {
-        @foreach (var item in Model.Replies)
+        @if (Model.Replies.Any())
         {
-            <div class="border border-primary p-4 mb-4 col-6">
-                @item.Description
-            </div>
+            @foreach (var item in Model.Replies)
+            {
+                <div class="border border-primary p-4 mb-2 col-7">
+                    @item.Description
+                </div>
+            }
         }
     }
-}
-<partial name="_PartialReply" model="null" />
+    <partial name="_PartialReply" model="null" />
+</div>

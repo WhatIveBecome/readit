@@ -3,28 +3,46 @@
 }
 <h1>@ViewData["Title"]</h1>
 
-<br /><br />
+<div>
+    <table class="text-light">
+        <tr>
+            <th>Nr</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Recognition</th>
+            <th>Solution</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Deleting forums and topics [FIXED]</td>
+            <td>Removal is not working as expected - it's always deleting the first record in the table.</td>
+            <td>
+                The problem is the script that shows the window with confirmaton. When clicking button it's not routing to particular id
+                (beacuse it is not possible without returning a view), only the next "yes" button has this feature aswell as asp-action.
+            </td>
+            <td>Just remove script and move all actions to one single button. It means losing cool javascript feature tho :(</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Searching topics</td>
+            <td>xxxx</td>
+            <td>xxxx</td>
+            <td>xxxx</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Redirecting to previous forum id after deleting topic</td>
+            <td>xxxx</td>
+            <td>xxxx</td>
+            <td>xxxx</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Counting forums and topics</td>
+            <td>xxxx</td>
+            <td>xxxx</td>
+            <td>xxxx</td>
+        </tr>
 
-1. Deleting forums and topics [FIXED]
-<br />
-<b>Description:</b> Removal is not working as expected - it's always deleting the first record in the table.
-<br />
-<b>Recognition:</b> The problem is the script that shows the window with confirmaton. When clicking button it's not routing to particular id 
-(beacuse it is not possible without returning a view), only the next "yes" button has this feature aswell as asp-action.
-<br />
-<b>Fix:</b> Just remove script and move all actions to one single button. It means losing cool javascript feature tho :(
-<br />
-<b>Ideas:</b> Maybe remake it into alert with ajax?
-<br />
-<br />
-2. Searching topics [WORKING]
-<br />
-<br />
-3. Redirecting to previous forum id after deleting topic [WORKING]
-<br />
-<br />
-4. Counting forums and topics [WORKING]
-<br />
-<br />
-
-[!]Make it a list or something
+    </table>
+</div>
