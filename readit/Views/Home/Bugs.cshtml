@@ -4,7 +4,7 @@
 <h1>@ViewData["Title"]</h1>
 
 <div>
-    <table class="text-light">
+    <table>
         <tr>
             <th>Nr</th>
             <th>Title</th>
@@ -20,28 +20,30 @@
                 The problem is the script that shows the window with confirmaton. When clicking button it's not routing to particular id
                 (beacuse it is not possible without returning a view), only the next "yes" button has this feature aswell as asp-action.
             </td>
-            <td>Just remove script and move all actions to one single button. It means losing cool javascript feature tho :(</td>
+            <td>Just remove script and move all actions to one single button. It means losing cool javascript feature though</td>
         </tr>
         <tr>
             <td>2</td>
             <td>Searching topics</td>
-            <td>xxxx</td>
-            <td>xxxx</td>
-            <td>xxxx</td>
+            <td>Searching topics not working at all</td>
+            <td>This is much harder to implement than searching forums, because it's working on returned id path</td>
+            <td></td>
         </tr>
         <tr>
             <td>3</td>
             <td>Redirecting to previous forum id after deleting topic</td>
-            <td>xxxx</td>
-            <td>xxxx</td>
-            <td>xxxx</td>
+            <td>Simply put method RedirectToAction cannot find new id after its deletion</td>
+            <td>After editing or creating content it is easy for a method to find new id, but with deleting it's impossible beacuse id is gone, so there is 
+                no chance for redirecting to new one</td>
+            <td></td>
         </tr>
         <tr>
             <td>4</td>
             <td>Counting forums and topics</td>
-            <td>xxxx</td>
-            <td>xxxx</td>
-            <td>xxxx</td>
+            <td>Feautre displayed in the table that counts existing topics for specific forum</td>
+            <td>I have no idea how to do that, controller needs to return View with _context.ToList, and modyfing model means that I need to return it also 
+                and the catch is that I cannot return both</td>
+            <td></td>
         </tr>
 
     </table>
