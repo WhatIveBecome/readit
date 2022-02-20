@@ -15,10 +15,8 @@ namespace readit.Controllers
         public async Task<IActionResult> Index(string name)
         {
             IQueryable<ForumModel> search = _appDbContext.Forums;
-            var forumModel = new ForumModel();
-            //var counterModel = new CounterModel()
 
-            forumModel.NumberOfTopics = forumModel.Topics?.Count() ?? 0; // upchnac w forums
+            //forumModel.NumberOfTopics = forumModel.Topics?.Count() ?? 0; // upchnac w forums
 
             if (!string.IsNullOrEmpty(name))
             {
