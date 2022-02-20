@@ -14,7 +14,7 @@
         </tr>
         <tr>
             <td>1</td>
-            <td>Deleting forums and topics [FIXED]</td>
+            <td>Deleting forums and topics <b>[FIXED]</b></td>
             <td>Removal is not working as expected - it's always deleting the first record in the table.</td>
             <td>
                 The problem is the script that shows the window with confirmaton. When clicking button it's not routing to particular id
@@ -39,11 +39,11 @@
         </tr>
         <tr>
             <td>4</td>
-            <td>Counting forums and topics</td>
+            <td>Counting forums and topics <b>[SOLVED]</b></td>
             <td>Feautre displayed in the table that counts existing topics for specific forum</td>
             <td>I have no idea how to do that, controller needs to return View with _context.ToList, and modyfing model means that I need to return it also 
                 and the catch is that I cannot return both</td>
-            <td></td>
+            <td>Solved by additional model which is receiving all data by LINQ from original model. All credits to my superb lecturer!</td>
         </tr>
 
     </table>

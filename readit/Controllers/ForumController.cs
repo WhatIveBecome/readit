@@ -20,15 +20,16 @@ namespace readit.Controllers
             {
                 search = search.Where(x => x.Name.Contains(name));
             }
-            search.Select(x => new ForumListingModel
+            var forumListingModels = search.Select(x => new ForumListingModel
             {
+                Id = x.Id,
                 Name = x.Name,
                 Description = x.Description,
                 ImageUrl = x.ImageUrl,
                 NumberOfTopics = x.Topics.Count(),
             });
 
-            var forums = await search.ToListAsync();
+            var forums = await forumListingModels.ToListAsync();
 
             return View(forums);
         }
