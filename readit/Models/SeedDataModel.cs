@@ -14,7 +14,6 @@ namespace readit.Models
                     Id = 1,
                     Name = "General discussion",
                     Description = "Basic informations",
-                    NumberOfTopics = forumModel.Topics?.Count() ?? 0,
                     ImageUrl = "/images/i2.png",
                 },
                  new ForumModel

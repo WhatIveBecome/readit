@@ -16,12 +16,19 @@ namespace readit.Controllers
         {
             IQueryable<ForumModel> search = _appDbContext.Forums;
 
-            //forumModel.NumberOfTopics = forumModel.Topics?.Count() ?? 0; // upchnac w forums
-
             if (!string.IsNullOrEmpty(name))
             {
                 search = search.Where(x => x.Name.Contains(name));
             }
+            
+            search.Select(x => new ForumListingModel
+            {
+                Name = x.Name,
+                Description = x.Description,
+                ImageUrl = x.ImageUrl,
+                NumberOfTopics = x.Topics.Count(),
+            });
+
             var forums = await search.ToListAsync();
 
             return View(forums);

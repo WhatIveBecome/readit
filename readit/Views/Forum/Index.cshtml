@@ -1,4 +1,4 @@
-﻿ @model IEnumerable<readit.Models.ForumModel>
+﻿ @model IEnumerable<readit.Models.ForumListingModel>
 
 @{
     ViewData["Title"] = "Forums";
@@ -34,7 +34,7 @@
                 <td><img src="@item.ImageUrl" width="25" /></td>
                 <td><a id="underline" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a></td>
                 <td>@item.Description</td>
-                <td>@ViewBag.Counter</td>
+                <td>@item.NumberOfTopics</td>
                 <td>
                     <form method="POST" asp-controller="Forum" asp-action="Delete" asp-route-id="@item.Id">
                         <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
