@@ -20,7 +20,6 @@ namespace readit.Controllers
             {
                 search = search.Where(x => x.Name.Contains(name));
             }
-            
             search.Select(x => new ForumListingModel
             {
                 Name = x.Name,

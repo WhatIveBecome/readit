@@ -28,7 +28,7 @@
             @*// TODO ADD VALIDATION*@
 
             <div class="form-check">
-                <input class="form-check-input" type="checkbox">
+                <input type="checkbox" name="checkbox" value="check" class="form-check-input" />
                 <label class="form-check-label">
                     I accept <u><a asp-controller="Home" asp-action="Rules" target="_blank">rules</a></u>
                 </label>
@@ -37,7 +37,7 @@
             <br />
 
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary col-3" />
+                <input type="submit" value="Create" class="save btn btn-primary col-3" />
             </div>
         </form>
     </div>
@@ -48,3 +48,5 @@
     await Html.RenderPartialAsync("_ValidationScriptsPartial");
 }
 }
+
+<script src="~/js/checkbox.js"></script>
