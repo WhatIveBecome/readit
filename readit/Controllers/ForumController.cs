@@ -14,16 +14,13 @@ namespace readit.Controllers
         }
         public async Task<IActionResult> Index(string name)
         {
-            IQueryable<ForumModel> search = _appDbContext.Forums;
-            var forumModel = new ForumModel();
-            //var counterModel = new CounterModel()
-
-            forumModel.NumberOfTopics = forumModel.Topics?.Count() ?? 0; // upchnac w forums
+            IQueryable<ForumModel> search = _appDbContext.Forums; 
 
             if (!string.IsNullOrEmpty(name))
             {
                 search = search.Where(x => x.Name.Contains(name));
             }
+
             var forums = await search.ToListAsync();
 
             return View(forums);
