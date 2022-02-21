@@ -25,6 +25,7 @@ namespace readit.Controllers
         public async Task<IActionResult> Create(TopicModel topicModel)
         {
             topicModel.Description = $"{_userManager.GetUserName(User)}: {topicModel.Description}";
+            topicModel.Author = _userManager.GetUserName(User);
             _appDbContext.Topics.Add(topicModel);
             await _appDbContext.SaveChangesAsync();
             TempData["success"] = "Topic successfully created";

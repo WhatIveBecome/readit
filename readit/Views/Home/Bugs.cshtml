@@ -33,18 +33,31 @@
             <td>3</td>
             <td>Redirecting to previous forum id after deleting topic</td>
             <td>Simply put method RedirectToAction cannot find new id after its deletion</td>
-            <td>After editing or creating content it is easy for a method to find new id, but with deleting it's impossible beacuse id is gone, so there is 
-                no chance for redirecting to new one</td>
+            <td>
+                After editing or creating content it is easy for a method to find new id, but with deleting it's impossible beacuse id is gone, so there is
+                no chance for redirecting to new one
+            </td>
             <td></td>
         </tr>
         <tr>
             <td>4</td>
             <td>Counting topics <b>[SOLVED]</b></td>
             <td>Feautre displayed in the table that counts existing topics for specific forum</td>
-            <td>I have no idea how to do that, controller needs to return View with _context.ToList, and modyfing model means that I need to return it also 
-                and the catch is that I cannot return both</td>
+            <td>
+                I have no idea how to do that, controller needs to return View with _context.ToList, and modyfing model means that I need to return it also
+                and the catch is that I cannot return both
+            </td>
             <td>Solved by additional model which is receiving all data by LINQ from original model. All credits to my superb lecturer!</td>
         </tr>
-
+        <tr>
+            <td>5</td>
+            <td>Counting replies </td>
+            <td>Feautre displayed in the table that counts existing replies for specific topic</td>
+            <td>
+                It is much more complicated because, the view that returns specific topic indeed return forum and load topics in background, so I cannot 
+                put additional listing model in the view like it was with counting topics feature
+            </td>
+            <td></td>
+        </tr>
     </table>
 </div>

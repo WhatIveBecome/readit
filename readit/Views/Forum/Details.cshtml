@@ -28,7 +28,7 @@
             <th>Name</th>
             <th>Description</th>
             <th>Author</th>
-            <th>Number of Replies</th>
+            <th>Replies</th>
             <th>Actions</th>
         </tr>
         @if (Model.Topics != null) //Model.TopicListing
@@ -40,7 +40,7 @@
                     <tr>
                         <td><a id="underline" asp-controller="Topic" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a></td>
                         <td>@item.Description</td>
-                        <td></td>
+                        <td>@item.Author</td>
                         <td>@*@{int? counter = @item.Replies?.Count();} @counter*@</td>
                         <td>
                             <form asp-controller="Topic" asp-action="Delete" asp-route-id="@item.Id">
