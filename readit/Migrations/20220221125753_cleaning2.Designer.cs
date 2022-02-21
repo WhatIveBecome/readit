@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using readit.Database;
 
@@ -11,9 +12,10 @@ using readit.Database;
 namespace readit.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220221125753_cleaning2")]
+    partial class cleaning2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -245,7 +247,7 @@ namespace readit.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Forums", (string)null);
+                    b.ToTable("Forums");
 
                     b.HasData(
                         new
@@ -318,7 +320,7 @@ namespace readit.Migrations
 
                     b.HasIndex("TopicModelId");
 
-                    b.ToTable("Replies", (string)null);
+                    b.ToTable("Replies");
                 });
 
             modelBuilder.Entity("readit.Models.TopicModel", b =>
@@ -344,7 +346,7 @@ namespace readit.Migrations
 
                     b.HasIndex("ForumModelId");
 
-                    b.ToTable("Topics", (string)null);
+                    b.ToTable("Topics");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

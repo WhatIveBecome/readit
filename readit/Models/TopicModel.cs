@@ -14,7 +14,5 @@ namespace readit.Models
         public int ForumModelId { get; set; }
         public virtual ForumModel ForumModel { get; set; }
         public virtual IEnumerable<ReplyModel> Replies { get; set; }
-
-
     }
 }
