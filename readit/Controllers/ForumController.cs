@@ -60,20 +60,24 @@ namespace readit.Controllers
 
         public async Task<IActionResult> Details(int? id)
         {
+            //var topicModel = _appDbContext.Topics;
+
+            //var topicListingModels = topicModel.Select(x => new TopicListingModel
+            //{
+            //    Id = x.Id,
+            //    Name = x.Name,
+            //    Description = x.Description,
+            //    ForumModelId = x.ForumModelId, 
+            //    NumberOfReplies = x.Replies.Count(),
+            //});
+
+            //await topicModel.ToListAsync();
             await _appDbContext.Topics.ToListAsync();
             var forumModel = await _appDbContext.Forums.FindAsync(id);
             if (id == null || forumModel == null)
             {
                 return NotFound();
             }
-
-            //IQueryable<ForumModel> search = _appDbContext.Forums;
-
-            //if (!string.IsNullOrEmpty(name))
-            //{
-            //    search = search.Where(x => x.Name.Contains(name));
-            //}
-            //var topicModel = await search.FirstOrDefaultAsync(i => i.Id == id.Value);
 
             return View(forumModel);
         }

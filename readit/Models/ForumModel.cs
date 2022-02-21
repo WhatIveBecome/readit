@@ -13,5 +13,6 @@ namespace readit.Models
         public string Description { get; set; }
         public string ImageUrl { get; set; }
         public virtual IEnumerable<TopicModel> Topics { get; set; }
+        //public virtual IEnumerable<TopicListingModel> TopicListing { get; set; }
     }
 }
