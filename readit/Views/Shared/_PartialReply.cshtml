@@ -1,8 +1,10 @@
 ﻿@model ReplyModel
 
+
+
 <form asp-controller="Reply" asp-action="Reply">
     <div class="col-7">
-<textarea asp-for="Description" class="form-control mb-2 " rows="4" id="reply"></textarea>
+<textarea asp-for="Description" class="form-control mb-2" rows="4" id="reply"></textarea>
     </div>
     <div class="form-group">
         <input type="hidden" class="inputId" asp-for="TopicModelId" class="form-control" value="@Context.Request.RouteValues["id"]" />
@@ -16,6 +18,5 @@
     Please make sure that you follow our community <u><a asp-controller="Home" asp-action="Rules" target="_blank">rules</a></u>   
     <button id="rulesOk">OK!</button>
 </div>
-
 @*<script src="~/js/script.js"></script>*@
 <script src="~/js/rules.js"></script>

@@ -2,16 +2,18 @@
 using Microsoft.EntityFrameworkCore;
 using readit.Database;
 using readit.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace readit.Controllers
 {
     public class TopicController : Controller
     {
         private readonly AppDbContext _appDbContext;
-
-        public TopicController(AppDbContext appDbContext)
+        private readonly UserManager<IdentityUser> _userManager;
+        public TopicController(AppDbContext appDbContext, UserManager<IdentityUser> userManager)
         {
             _appDbContext = appDbContext;
+            _userManager = userManager;
         }
 
         public async Task<IActionResult> Index()
@@ -22,7 +24,7 @@ namespace readit.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(TopicModel topicModel)
         {
-            
+            topicModel.Description = $"{_userManager.GetUserName(User)}: {topicModel.Description}";
             _appDbContext.Topics.Add(topicModel);
             await _appDbContext.SaveChangesAsync();
             TempData["success"] = "Topic successfully created";
