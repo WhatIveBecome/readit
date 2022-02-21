@@ -10,10 +10,12 @@ namespace readit.Controllers
     {
         private readonly AppDbContext _appDbContext;
         private readonly UserManager<IdentityUser> _userManager;
-        public TopicController(AppDbContext appDbContext, UserManager<IdentityUser> userManager)
+        private readonly SignInManager<IdentityUser> _signInManager;
+        public TopicController(AppDbContext appDbContext, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             _appDbContext = appDbContext;
             _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         public async Task<IActionResult> Index()
@@ -24,42 +26,57 @@ namespace readit.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(TopicModel topicModel)
         {
-            topicModel.Description = $"{_userManager.GetUserName(User)}: {topicModel.Description}";
-            topicModel.Author = _userManager.GetUserName(User);
-            _appDbContext.Topics.Add(topicModel);
-            await _appDbContext.SaveChangesAsync();
-            TempData["success"] = "Topic successfully created";
-            return RedirectToAction("Details", "Forum", new { id = topicModel.ForumModelId });
+            if (_signInManager.IsSignedIn(User))
+            {
+                topicModel.Description = $"{_userManager.GetUserName(User)}: {topicModel.Description}";
+                topicModel.Author = _userManager.GetUserName(User);
+                _appDbContext.Topics.Add(topicModel);
+                await _appDbContext.SaveChangesAsync();
+                TempData["success"] = "Topic successfully created";
+                return RedirectToAction("Details", "Forum", new { id = topicModel.ForumModelId });
+            }
+            return NotFound();
         }
 
         [HttpPost]
         public async Task<IActionResult> Delete(TopicModel topicModel)
         {
-            _appDbContext.Remove(topicModel);
-            await _appDbContext.SaveChangesAsync();
-            TempData["success"] = "Topic successfully deleted";
-            return RedirectToAction("Index", "Forum"); // Action Back to previous id??
+            if (_signInManager.IsSignedIn(User))
+            {
+                _appDbContext.Remove(topicModel);
+                await _appDbContext.SaveChangesAsync();
+                TempData["success"] = "Topic successfully deleted";
+                return RedirectToAction("Index", "Forum"); // Action Back to previous id??
+            }
+            return NotFound();
         }
 
         public async Task<IActionResult> Edit(int? id)
         {
-            var topicModel = await _appDbContext.Topics.FindAsync(id);
-
-            if (id == null || topicModel == null)
+            if (_signInManager.IsSignedIn(User))
             {
-                return NotFound();
-            }
+                var topicModel = await _appDbContext.Topics.FindAsync(id);
 
-            return View(topicModel);
+                if (id == null || topicModel == null)
+                {
+                    return NotFound();
+                }
+                return View(topicModel);
+            }
+            return NotFound();
         }
 
         [HttpPost]
         public async Task<IActionResult> Edit(TopicModel topicModel)
         {
-            _appDbContext.Topics.Update(topicModel);
-            await _appDbContext.SaveChangesAsync();
-            TempData["success"] = "Topic successfully modified";
-            return RedirectToAction("Details", "Forum", new { id = topicModel.ForumModelId });
+            if (_signInManager.IsSignedIn(User))
+            {
+                _appDbContext.Topics.Update(topicModel);
+                await _appDbContext.SaveChangesAsync();
+                TempData["success"] = "Topic successfully modified";
+                return RedirectToAction("Details", "Forum", new { id = topicModel.ForumModelId });
+            }
+            return NotFound();
         }
 
         public async Task<IActionResult> Details(int? id)

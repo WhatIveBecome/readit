@@ -2,15 +2,18 @@
 using Microsoft.EntityFrameworkCore;
 using readit.Database;
 using readit.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace readit.Controllers
 {
     public class ForumController : Controller
     {
         private readonly AppDbContext _appDbContext;
-        public ForumController(AppDbContext appDbContext)
+        private readonly SignInManager<IdentityUser> _signInManager;
+        public ForumController(AppDbContext appDbContext, SignInManager<IdentityUser> signInManager)
         {
             _appDbContext = appDbContext;
+            _signInManager = signInManager;
         }
         public async Task<IActionResult> Index(string name)
         {
@@ -36,26 +39,38 @@ namespace readit.Controllers
 
         public IActionResult Create()
         {
-            return View();
+            if (_signInManager.IsSignedIn(User))
+            {
+                return View();
+            }
+            return NotFound();
         }
 
         public async Task<IActionResult> CreateTopic(int? id)
         {
-            var forumModel = await _appDbContext.Forums.FindAsync(id);
-            if (id == null || forumModel == null)
+            if (_signInManager.IsSignedIn(User))
             {
-                return NotFound();
+                var forumModel = await _appDbContext.Forums.FindAsync(id);
+                if (id == null || forumModel == null)
+                {
+                    return NotFound();
+                }
+                return View(forumModel);
             }
-            return View(forumModel);
+            return NotFound();
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(ForumModel forumModel)
         {
-            _appDbContext.Forums.Add(forumModel);
-            await _appDbContext.SaveChangesAsync();
-            TempData["success"] = "Forum successfully created";
-            return RedirectToAction("Index");
+            if (_signInManager.IsSignedIn(User))
+            {
+                _appDbContext.Forums.Add(forumModel);
+                await _appDbContext.SaveChangesAsync();
+                TempData["success"] = "Forum successfully created";
+                return RedirectToAction("Index");
+            }
+            return NotFound();
         }
 
         public async Task<IActionResult> Details(int? id)
@@ -84,32 +99,44 @@ namespace readit.Controllers
 
         public async Task<IActionResult> Edit(int? id)
         {
-            var forumModel = await _appDbContext.Forums.FindAsync(id);
-
-            if (id == null || forumModel == null)
+            if (_signInManager.IsSignedIn(User))
             {
-                return NotFound();
-            }
+                var forumModel = await _appDbContext.Forums.FindAsync(id);
 
-            return View(forumModel);
+                if (id == null || forumModel == null)
+                {
+                    return NotFound();
+                }
+
+                return View(forumModel);
+            }
+            return NotFound();
         }
 
         [HttpPost]
         public async Task<IActionResult> Edit(ForumModel forumModel)
         {
-            _appDbContext.Forums.Update(forumModel);
-            await _appDbContext.SaveChangesAsync();
-            TempData["success"] = "Forum successfully modified";
-            return RedirectToAction("Index");
+            if (_signInManager.IsSignedIn(User))
+            {
+                _appDbContext.Forums.Update(forumModel);
+                await _appDbContext.SaveChangesAsync();
+                TempData["success"] = "Forum successfully modified";
+                return RedirectToAction("Index");
+            }
+            return NotFound();
         }
 
         [HttpPost]
         public async Task<IActionResult> Delete(ForumModel forumModel)
         {
-            _appDbContext.Forums.Remove(forumModel);
-            await _appDbContext.SaveChangesAsync();
-            TempData["success"] = "Forum successfully deleted";
-            return RedirectToAction("Index");
+            if (_signInManager.IsSignedIn(User))
+            {
+                _appDbContext.Forums.Remove(forumModel);
+                await _appDbContext.SaveChangesAsync();
+                TempData["success"] = "Forum successfully deleted";
+                return RedirectToAction("Index");
+            }
+            return NotFound();
         }
     }
 }
