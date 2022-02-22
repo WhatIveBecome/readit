@@ -31,8 +31,11 @@ namespace readit.Controllers
             {
                 topicModel.FullDescription = $"{_userManager.GetUserName(User)}: {topicModel.Description}";
                 string trunc = topicModel.Description;
-                string truncplus = trunc.Truncate(80) + "...";
-                topicModel.Description = truncplus;
+                if (trunc.Length > 80)
+                {
+                    string truncplus = trunc.Truncate(80) + "...";
+                    topicModel.Description = truncplus;
+                }
                 topicModel.Author = _userManager.GetUserName(User);
                 _appDbContext.Topics.Add(topicModel);
                 await _appDbContext.SaveChangesAsync();
