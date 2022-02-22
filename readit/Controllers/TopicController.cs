@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using readit.Database;
 using readit.Models;
 using Microsoft.AspNetCore.Identity;
+using readit.Methods;
 
 namespace readit.Controllers
 {
@@ -29,6 +30,9 @@ namespace readit.Controllers
             if (_signInManager.IsSignedIn(User))
             {
                 topicModel.FullDescription = $"{_userManager.GetUserName(User)}: {topicModel.Description}";
+                string trunc = topicModel.Description;
+                string truncplus = trunc.Truncate(80) + "...";
+                topicModel.Description = truncplus;
                 topicModel.Author = _userManager.GetUserName(User);
                 _appDbContext.Topics.Add(topicModel);
                 await _appDbContext.SaveChangesAsync();
@@ -71,6 +75,11 @@ namespace readit.Controllers
         {
             if (_signInManager.IsSignedIn(User))
             {
+                topicModel.FullDescription = $"{_userManager.GetUserName(User)}: {topicModel.Description}";
+                string trunc = topicModel.Description;
+                string truncplus = trunc.Truncate(80) + "...";
+                topicModel.Description = truncplus;
+                topicModel.Author = _userManager.GetUserName(User);
                 _appDbContext.Topics.Update(topicModel);
                 await _appDbContext.SaveChangesAsync();
                 TempData["success"] = "Topic successfully modified";

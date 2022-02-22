@@ -53,7 +53,7 @@
             {
                 <tr>
                     <td><a id="underline" asp-controller="Topic" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a></td>
-                    <td>@item.Description</td>
+                    <td class="desc">@item.Description</td>
                     <td>@item.Author</td>
                     <td>@*@{int? counter = @item.Replies?.Count();} @counter*@</td>
                     @if (SignInManager.IsSignedIn(User))
