@@ -28,7 +28,7 @@ namespace readit.Controllers
         {
             if (_signInManager.IsSignedIn(User))
             {
-                topicModel.Description = $"{_userManager.GetUserName(User)}: {topicModel.Description}";
+                topicModel.FullDescription = $"{_userManager.GetUserName(User)}: {topicModel.Description}";
                 topicModel.Author = _userManager.GetUserName(User);
                 _appDbContext.Topics.Add(topicModel);
                 await _appDbContext.SaveChangesAsync();
