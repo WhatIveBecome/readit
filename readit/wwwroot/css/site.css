@@ -119,14 +119,16 @@ table th {
     border: 2px solid black;
     text-align: center;
     padding: 0.3vw;
-    background-color: #353a3d;
+    background-color: dimgrey;
+    height: 30px;
 }
 
-table td {
-    border: 2px solid black;
-    text-align: center;
-    padding: 0.2vw 0.5vw;
-}
+    table td {
+        border: 2px solid black;
+        text-align: center;
+        padding: 0.2vw 0.5vw;
+        height: 55px;
+    }
 
 table tr:nth-child(odd) td {
     background-color: #353a3d;

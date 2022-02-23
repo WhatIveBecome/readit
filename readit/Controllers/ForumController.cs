@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using readit.Database;
 using readit.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace readit.Controllers
 {
@@ -59,7 +60,8 @@ namespace readit.Controllers
             }
             return NotFound();
         }
-
+        [Authorize(Roles = Roles.Admin)]
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public async Task<IActionResult> Create(ForumModel forumModel)
         {
