@@ -4,6 +4,7 @@ using readit.Database;
 using readit.Models;
 using Microsoft.AspNetCore.Identity;
 using readit.Methods;
+using Microsoft.AspNetCore.Authorization;
 
 namespace readit.Controllers
 {
@@ -44,7 +45,7 @@ namespace readit.Controllers
             }
             return NotFound();
         }
-
+        [Authorize(Roles = Roles.Admin)]
         [HttpPost]
         public async Task<IActionResult> Delete(TopicModel topicModel)
         {
@@ -57,7 +58,7 @@ namespace readit.Controllers
             }
             return NotFound();
         }
-
+        [Authorize(Roles = Roles.Admin)]
         public async Task<IActionResult> Edit(int? id)
         {
             if (_signInManager.IsSignedIn(User))
@@ -72,7 +73,7 @@ namespace readit.Controllers
             }
             return NotFound();
         }
-
+        [Authorize(Roles = Roles.Admin)]
         [HttpPost]
         public async Task<IActionResult> Edit(TopicModel topicModel)
         {

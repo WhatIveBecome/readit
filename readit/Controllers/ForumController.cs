@@ -37,7 +37,7 @@ namespace readit.Controllers
 
             return View(forums);
         }
-
+        [Authorize(Roles = Roles.Admin)]
         public IActionResult Create()
         {
             if (_signInManager.IsSignedIn(User))
@@ -61,7 +61,6 @@ namespace readit.Controllers
             return NotFound();
         }
         [Authorize(Roles = Roles.Admin)]
-        [ValidateAntiForgeryToken]
         [HttpPost]
         public async Task<IActionResult> Create(ForumModel forumModel)
         {
@@ -98,7 +97,7 @@ namespace readit.Controllers
 
             return View(forumModel);
         }
-
+        [Authorize(Roles = Roles.Admin)]
         public async Task<IActionResult> Edit(int? id)
         {
             if (_signInManager.IsSignedIn(User))
@@ -114,7 +113,7 @@ namespace readit.Controllers
             }
             return NotFound();
         }
-
+        [Authorize(Roles = Roles.Admin)]
         [HttpPost]
         public async Task<IActionResult> Edit(ForumModel forumModel)
         {
@@ -127,7 +126,7 @@ namespace readit.Controllers
             }
             return NotFound();
         }
-
+        [Authorize(Roles = Roles.Admin)]
         [HttpPost]
         public async Task<IActionResult> Delete(ForumModel forumModel)
         {

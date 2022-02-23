@@ -18,7 +18,9 @@
 }
 else
 {
-    <div>Log in to add reply</div>
+    <div style="font-size: 25px;" class="col-7 text-center">
+                <a style="color: red;" asp-area="Identity" asp-page="/Account/Login">Log in</a> to create topic
+            </div>
 }
 <div class="col-6 p-4 mt-3 border border-danger" id="rules">
     Please make sure that you follow our community <u><a asp-controller="Home" asp-action="Rules" target="_blank">rules</a></u>
