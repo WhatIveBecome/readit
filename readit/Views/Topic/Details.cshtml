@@ -12,7 +12,7 @@
         <br />
         @if (Model.FullDescription.Contains("admin@admin.com"))
                 {
-                    <div class="border border-danger p-4 mb-2">
+                    <div class="border border-danger p-4 mb-2" style="color: yellow;"> <b style="color: red;">ADMIN</b>   
             @Html.DisplayFor(model => model.FullDescription)
         </div>
                 }else{
@@ -29,7 +29,7 @@
             {
                    @if (item.Description.Contains("admin@admin.com"))
                 {
-                    <div class="border border-danger p-4 mb-2 col-7" >                                
+                    <div class="border border-danger p-4 mb-2 col-7" style="color: yellow;" >  <b style="color: red;">ADMIN</b>                                
                     @item.Description
                 </div>
                 }else{
