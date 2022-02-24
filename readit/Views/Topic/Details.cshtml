@@ -10,7 +10,7 @@
     </div>
     <div class="col-7">
         <br />
-        @if (Model.FullDescription.Contains("admin@admin.com"))
+        @if (Model.FullDescription.Contains("admin@admin.com")) // separate to author admin, to disable cheating
                 {
                     <div class="border border-danger p-4 mb-2" style="color: yellow;"> <b style="color: red;">ADMIN</b>   
             @Html.DisplayFor(model => model.FullDescription)
