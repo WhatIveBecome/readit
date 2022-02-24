@@ -117,6 +117,13 @@ namespace readit.Areas.Identity.Pages.Account
                 _roleManager.CreateAsync(new IdentityRole(Roles.Admin)).GetAwaiter().GetResult();
                 _roleManager.CreateAsync(new IdentityRole(Roles.User)).GetAwaiter().GetResult();
             }
+
+            //_userManager.CreateAsync(new ApplicationUser // not working
+            //{
+            //    Nick = "Admin",
+            //    Email = "admin@admin.com"
+            //}, "Admin123!").GetAwaiter().GetResult();
+
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             Input = new InputModel()
