@@ -10,9 +10,16 @@
     </div>
     <div class="col-7">
         <br />
-        <div class="border border-danger p-4 mb-2">
+        @if (Model.FullDescription.Contains("admin@admin.com"))
+                {
+                    <div class="border border-danger p-4 mb-2">
             @Html.DisplayFor(model => model.FullDescription)
         </div>
+                }else{
+        <div class="border border-primary p-4 mb-2">
+            @Html.DisplayFor(model => model.FullDescription)
+        </div>
+                }
     </div>
     @if (Model.Replies != null)
     {
@@ -20,11 +27,19 @@
         {
             @foreach (var item in Model.Replies)
             {
-                <div class="border border-primary p-4 mb-2 col-7">                                
+                   @if (item.Description.Contains("admin@admin.com"))
+                {
+                    <div class="border border-danger p-4 mb-2 col-7" >                                
                     @item.Description
                 </div>
+                }else{
+                <div class="border border-primary p-4 mb-2 col-7" >                                
+                    @item.Description
+                </div>
+                }
             }
         }
     }
     <partial name="_PartialReply" model="null" />
 </div>
+
