@@ -1,7 +1,8 @@
 # readit
 
 Project started: 21st January 2022
-Proejct ended: 24th February 2022
+
+Project ended: 24th February 2022
 
 Website: https://readitforum.azurewebsites.net/
 
