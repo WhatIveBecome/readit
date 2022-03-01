@@ -10,14 +10,16 @@
     </div>
     <div class="col-7">
         <br />
-        @if (Model.FullDescription.Contains("admin@admin.com")) // separate to author admin, to disable cheating
+        @if (Model.FullDescription.Contains("admin@admin.com") || Model.FullDescription.Contains("Erthill@erthill.com"))// separate to author admin, to disable cheating
                 {
                     <div class="border border-danger p-4 mb-2" style="color: yellow;"> <b style="color: red;">ADMIN</b>   
             @Html.DisplayFor(model => model.FullDescription)
+            <div class="mt-3" style="color: grey;">@Html.DisplayFor(model => model.Time)</div>
         </div>
                 }else{
         <div class="border border-primary p-4 mb-2">
             @Html.DisplayFor(model => model.FullDescription)
+            <div class="mt-3" style="color: grey;">@Html.DisplayFor(model => model.Time)</div>
         </div>
                 }
     </div>
@@ -27,14 +29,16 @@
         {
             @foreach (var item in Model.Replies)
             {
-                   @if (item.Description.Contains("admin@admin.com"))
+                   @if (item.Description.Contains("admin@admin.com") || item.Description.Contains("Erthill@erthill.com"))
                 {
                     <div class="border border-danger p-4 mb-2 col-7" style="color: yellow;" >  <b style="color: red;">ADMIN</b>                                
                     @item.Description
+                    <div class="mt-3" style="color: grey;">@item.Time</div>
                 </div>
                 }else{
                 <div class="border border-primary p-4 mb-2 col-7" >                                
-                    @item.Description
+                    @item.Description                   
+                    <div class="mt-3" style="color: grey;">@item.Time</div>
                 </div>
                 }
             }

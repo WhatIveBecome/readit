@@ -12,6 +12,7 @@ namespace readit.Models
         public string Description { get; set; }
         public string FullDescription { get; set; }
         public string Author { get; set; }
+        public DateTime Time { get; set; } = DateTime.Now;
         [Required]     
         public int ForumModelId { get; set; }
         public virtual ForumModel ForumModel { get; set; }
