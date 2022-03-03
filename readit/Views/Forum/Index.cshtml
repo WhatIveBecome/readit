@@ -50,23 +50,27 @@
                     <td><a id="underline" asp-controller="Forum" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a></td>
                     <td>@item.Description</td>
                     <td>@item.NumberOfTopics</td>
-                       @if (User.IsInRole(Roles.Admin)) 
-                    {
                         <td>
+                        @if (User.IsInRole(Roles.Admin) && item.Id > 7)
+                        {
                             <form method="POST" asp-controller="Forum" asp-action="Delete" asp-route-id="@item.Id">
-                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
-                            <button type="submit" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
-                        </form>
-                        @*                    <a class="del btn btn-danger">Delete</a>
-                            <div class="confirm hidden">
-                            <h1>Are you sure?</h1>
-                            <form asp-action="Delete" asp-controller="Forum" asp-route-id="@item.Id">
-                            <input type="submit" value="Yes" class="btn btn-danger" />
-                            <a class="btn btn-secondary" id="no">No</a>
-                            </form>
-                            </div>*@
-                    </td>
-                    }
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                                <button type="submit" class="btn btn-danger"><i class="bi bi-trash3"></i></button>
+                            </form>                       
+                            @*                    <a class="del btn btn-danger">Delete</a>
+                                <div class="confirm hidden">
+                                <h1>Are you sure?</h1>
+                                <form asp-action="Delete" asp-controller="Forum" asp-route-id="@item.Id">
+                                <input type="submit" value="Yes" class="btn btn-danger" />
+                                <a class="btn btn-secondary" id="no">No</a>
+                                </form>
+                                </div>*@
+                        }
+                        else
+                        {
+                            <div>Restricted</div>
+                        }
+                    </td>                   
                 </tr>
             }
         }

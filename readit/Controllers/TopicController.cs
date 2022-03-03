@@ -49,7 +49,7 @@ namespace readit.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(TopicModel topicModel)
         {
-            if (_signInManager.IsSignedIn(User))
+            if (_signInManager.IsSignedIn(User) && topicModel.Id != 12)
             {
                 _appDbContext.Remove(topicModel);
                 await _appDbContext.SaveChangesAsync();
