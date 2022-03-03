@@ -117,7 +117,7 @@ namespace readit.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(ForumModel forumModel)
         {
-            if (_signInManager.IsSignedIn(User))
+            if (_signInManager.IsSignedIn(User) && forumModel.Id > 7)
             {
                 _appDbContext.Forums.Update(forumModel);
                 await _appDbContext.SaveChangesAsync();
@@ -130,7 +130,7 @@ namespace readit.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete(ForumModel forumModel)
         {
-            if (_signInManager.IsSignedIn(User))
+            if (_signInManager.IsSignedIn(User) && forumModel.Id > 7)
             {
                 _appDbContext.Forums.Remove(forumModel);
                 await _appDbContext.SaveChangesAsync();
