@@ -12,7 +12,7 @@ Version 1.00.0:
 
 Time spent: 107h* 
 
-Version 1.00.1 (since 28th February):
+Current version 1.00.1 (since 28th February):
 
 Time spent: 3h
 
