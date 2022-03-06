@@ -45,7 +45,7 @@ namespace readit.Controllers
             }
             return NotFound();
         }
-        [Authorize(Roles = Roles.Admin)]
+        [Authorize(Roles = "Admin, Moderator")]
         [HttpPost]
         public async Task<IActionResult> Delete(TopicModel topicModel)
         {

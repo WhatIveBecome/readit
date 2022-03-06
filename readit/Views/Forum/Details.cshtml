@@ -40,7 +40,7 @@
         <th>Description</th>
         <th>Author</th>
         <th>Replies</th>
-        @if (User.IsInRole(Roles.Admin))
+        @if (User.IsInRole(Roles.Admin) || User.IsInRole(Roles.Moderator))
         {
             <th>Actions</th>
         }
@@ -56,7 +56,7 @@
                     <td class="desc">@item.Description</td>
                     <td>@item.Author</td>
                     <td>@*@{int? counter = @item.Replies?.Count();} @counter*@</td>
-                    @if (User.IsInRole(Roles.Admin))
+                    @if (User.IsInRole(Roles.Admin) || User.IsInRole(Roles.Moderator))
                     {
                         <td>
                             @if (item.Id != 12)

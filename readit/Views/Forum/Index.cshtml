@@ -10,14 +10,14 @@
 
 <div class="mb-2 mt-4">
     <div class="row">
-        @if (User.IsInRole(Roles.Admin))
+        @if (User.IsInRole(Roles.Admin) || User.IsInRole(Roles.Moderator))
         {
             <div class="col-9">
                 <a asp-action="Create" class="btn btn-primary col-2">New Forum</a>
             </div>
         }else
         {
-            <div class="col-9" style="font-size: 25px;">Only admin can create forums</div>
+            <div class="col-9" style="font-size: 25px;">Only moderator can create forums</div>
         }
 
 
@@ -35,7 +35,7 @@
         <th>Name</th>
         <th>Description</th>
         <th>Topics</th>
-        @if (User.IsInRole(Roles.Admin))
+        @if (User.IsInRole(Roles.Admin) || User.IsInRole(Roles.Moderator))
         {
             <th>Actions</th>
         }
@@ -54,7 +54,7 @@
                     <td><a id="underline" asp-controller="Forum" asp-action="Details" asp-route-id="@item.Id">@Html.DisplayFor(modelItem => item.Name)</a></td>
                     <td>@item.Description</td>
                     <td>@item.NumberOfTopics</td>
-                    @if (User.IsInRole(Roles.Admin) && item.Id > 7)
+                    @if (User.IsInRole(Roles.Admin) || User.IsInRole(Roles.Moderator) && item.Id > 7)
                     {
                         <td>
 
@@ -74,7 +74,7 @@
 
                         </td>
                     }
-                    else if (User.IsInRole(Roles.Admin))
+                    else if (User.IsInRole(Roles.Admin) || User.IsInRole(Roles.Moderator))
                     {
                         <td>
                             <div>Restricted</div>
