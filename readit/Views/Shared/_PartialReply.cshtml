@@ -3,29 +3,31 @@
 @inject SignInManager<IdentityUser> SignInManager
 
     @if (SignInManager.IsSignedIn(User))
-    {
-            <form asp-controller="Reply" asp-action="Reply">
-                <div class="col-7">
-                    <textarea asp-for="Description" class="form-control mb-2" rows="4" id="reply"></textarea>
-                </div>
-                <div class="form-group">
-                    <input type="hidden" class="inputId" asp-for="TopicModelId" class="form-control" value="@Context.Request.RouteValues["id"]" />
-                </div>
-                <div class="rply-btn">
-                    <button type="submit" value="Reply" class="btn btn-primary col-2">Reply</button>
-                </div>
-            </form>       
-    }
+{
+    <form asp-controller="Reply" asp-action="Reply">
+        <div>
+            <textarea asp-for="Description" class="form-control mb-2" rows="4" id="reply"></textarea>
+        </div>
+        <div class="form-group">
+            <input type="hidden" class="inputId" asp-for="TopicModelId" class="form-control" value="@Context.Request.RouteValues["id"]" />
+        </div>
+        <div class="rply-btn text-center">
+            <button type="submit" value="Reply" class="btn btn-primary col-3">Reply</button>
+        </div>
+    </form>
+}
 
 else
 {
-<div style="font-size: 25px;" class="col-7 text-center">
-    <a style="color: red;" asp-area="Identity" asp-page="/Account/Login">Log in</a> to add reply
-</div>
+    <div style="font-size: 25px;" class="col-7 text-center">
+        <a style="color: red;" asp-area="Identity" asp-page="/Account/Login">Log in</a> to add reply
+    </div>
 }
-<div class="col-6 p-4 mt-3 border border-danger" id="rules">
+<div class="col-6 p-4 mt-3 border border-danger offset-3 text-center" id="rules">
     Please make sure that you follow our community <u><a asp-controller="Home" asp-action="Rules" target="_blank">rules</a></u>
-    <button id="rulesOk">OK!</button>
+    <div class="text-center">
+        <button id="rulesOk" class="btn btn-success">OK!</button>
+    </div>
 </div>
 @*<script src="~/js/script.js"></script>*@
 <script src="~/js/rules.js"></script>
