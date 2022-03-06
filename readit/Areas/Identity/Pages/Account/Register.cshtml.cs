@@ -115,6 +115,7 @@ namespace readit.Areas.Identity.Pages.Account
             if (!_roleManager.RoleExistsAsync(Roles.Admin).GetAwaiter().GetResult())
             {
                 _roleManager.CreateAsync(new IdentityRole(Roles.Admin)).GetAwaiter().GetResult();
+                _roleManager.CreateAsync(new IdentityRole(Roles.Moderator)).GetAwaiter().GetResult();
                 _roleManager.CreateAsync(new IdentityRole(Roles.User)).GetAwaiter().GetResult();
             }
 
