@@ -12,8 +12,8 @@ Version 1.00.0:
 
 Time spent: 107h* 
 
-Current version 1.00.1 (since 28th February):
+Current version 1.04.1 (since 28th February):
 
-Time spent: 3h
+Time spent: 3.5h
 
 <i>* This is my first invidual project so I spent a lot of time learning how asp.net really works in practice. Also I didn't follow any tutorial, because I wanted to do this project on my own as much as it is possible.</i>
