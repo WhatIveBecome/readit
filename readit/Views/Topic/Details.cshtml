@@ -20,6 +20,14 @@
                 <div class="mt-3" style="color: grey;">@Html.DisplayFor(model => model.Time)</div>
             </div>
         }
+        else if (Model.FullDescription.Contains("moderator@moderator.com"))
+        {
+            <div class="border border-warning p-4 mb-2">
+                <b style="color: yellow;">MODERATOR</b>
+                @Html.DisplayFor(model => model.FullDescription)
+                <div class="mt-3" style="color: grey;">@Html.DisplayFor(model => model.Time)</div>
+            </div>
+        }
         else
         {
             <div class="border border-primary p-4 mb-2">
@@ -42,6 +50,14 @@
                         <div class="mt-3" style="color: grey;">@item.Time</div>
                     </div>
                 }
+                else if (item.Description.Contains("moderator@moderator.com"))
+                {
+                    <div class="border border-warning p-4 mb-2">
+                        <b style="color: yellow;">MODERATOR</b>
+                        @item.Description
+                        <div class="mt-3" style="color: grey;">@Html.DisplayFor(model => model.Time)</div>
+                    </div>
+                }
                 else
                 {
                     <div class="border border-primary p-4 mb-2">
@@ -52,7 +68,7 @@
             }
         }
     }
-    @if (Model.Id != 12) // add main admin role
+    @if (Model.Id != 12 && Model.Id != 22) // add main admin role
     {
         <partial name="_PartialReply" model="null" />
     }

@@ -59,7 +59,7 @@
                     @if (User.IsInRole(Roles.Admin) || User.IsInRole(Roles.Moderator))
                     {
                         <td>
-                            @if (item.Id != 12)
+                            @if (item.Id != 12 && item.Id != 22)
                             {
                                 <form asp-controller="Topic" asp-action="Delete" asp-route-id="@item.Id">
                                     @*<a asp-action="Edit" asp-controller="Topic" asp-route-id="@item.Id" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>*@
