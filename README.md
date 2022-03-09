@@ -10,7 +10,7 @@ I am taking a break now from developing this project and I am focusing now on a 
 
 Version 1.00.0:
 
-Time spent: 107h* 
+Time spent: 112h* 
 
 Current version 1.04.1 (since 28th February):
 
