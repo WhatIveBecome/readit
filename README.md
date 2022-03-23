@@ -2,7 +2,7 @@
 
 Project started: 21st January 2022
 
-Project ended: 24th February 2022 (ver. 1.00.0)
+Project finished: 24th February 2022 (ver. 1.00.0)
 
 Website: https://readitforum.azurewebsites.net/
 
