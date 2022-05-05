@@ -8,8 +8,6 @@ Website: https://readitforum.azurewebsites.net/
 
 I am taking a break now from developing this project and I am focusing now on a new one. I will return to this forum in the future, there is still a lot to do.
 
-Version 1.00.0:
-
 Time spent: 112h* 
 
 Current version 1.04.1 (since 28th February):
