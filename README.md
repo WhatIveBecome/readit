@@ -4,7 +4,7 @@ Project started: 21st January 2022
 
 Project finished: 24th February 2022 (ver. 1.00.0)
 
-Website: https://readitforum.azurewebsites.net/ (loading may take a while)
+Website: https://readitforum.azurewebsites.net/ (loading the page may take a while)
 
 I am taking a break now from developing this project and I am focusing now on a new one. I will return to this forum in the future, there is still a lot to do.
 
