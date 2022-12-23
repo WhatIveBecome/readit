@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(
-config => config.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+config => config.UseSqlServer(builder.Configuration.GetConnectionString("Connection")));
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddDefaultTokenProviders().AddDefaultUI()
  .AddEntityFrameworkStores<AppDbContext>();
 builder.Services.AddSingleton<IEmailSender, EmailSender>();
